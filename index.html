@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jaboneria Ocean | Tienda virtual</title>
+<meta name="description" content="Tienda virtual Jaboneria Ocean — bases de glicerina, fragancias, aceites, extractos, colorantes, implementos y más.">
+<style>
+:root{--blue:#07549a;--blue2:#24a9dc;--cyan:#56c8e8;--ink:#17304b;--muted:#6d7f91;--bg:#e8f6fb;--card:#fff;--pink:#ef6e9b;--line:#dceef5;--shadow:0 12px 35px rgba(18,83,120,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#e7f6fb,#dceff7);color:var(--ink)}
+a{text-decoration:none;color:inherit}.wrap{max-width:1180px;margin:auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;gap:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand img{width:52px;height:52px;object-fit:contain}.brand span{font-size:18px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.5px;font-weight:700}.navlinks{margin-left:auto;display:flex;gap:20px;font-size:14px;font-weight:700;color:#4d6578}.navlinks a:hover{color:var(--blue)}
+.hero{padding:54px 0 30px}.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:99px;background:#e0f6fd;color:var(--blue);font-size:12px;font-weight:800}.hero h1{font-size:clamp(38px,6vw,68px);line-height:.98;margin:16px 0 18px;letter-spacing:-3px}.hero h1 em{font-style:normal;color:var(--blue2)}.hero p{font-size:17px;line-height:1.65;color:#607487;max-width:620px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:14px;padding:13px 18px;font-weight:800;cursor:pointer}.btn.primary{background:var(--blue);color:#fff;box-shadow:0 10px 22px rgba(7,84,154,.22)}.btn.whats{background:#19b96b;color:#fff}.btn.ghost{background:#fff;border:1px solid var(--line)}.heroLogo{background:#fff;border:1px solid var(--line);border-radius:35px;padding:35px;box-shadow:var(--shadow);display:grid;place-items:center;position:relative;overflow:hidden}.heroLogo:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,#dff7ff,transparent 68%);right:-80px;bottom:-90px}.heroLogo img{width:min(100%,380px);position:relative;filter:drop-shadow(0 15px 22px rgba(0,70,120,.14))}
+.toolbar{position:relative;z-index:5;background:rgba(226,243,249,.94);backdrop-filter:blur(10px);padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.toolbarRow{display:flex;gap:10px;align-items:center}.search{flex:1;position:relative}.search input{width:100%;padding:14px 16px 14px 44px;border:1px solid var(--line);border-radius:14px;background:#fff;outline:0;font-size:15px}.search span{position:absolute;left:15px;top:12px;font-size:20px}.cats{display:flex;gap:8px;overflow:auto;padding-bottom:2px}.chip{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:99px;padding:10px 13px;font-weight:700;font-size:12px;color:#52697c;cursor:pointer}.chip.active,.chip:hover{background:#e0f6fd;border-color:#bdebf8;color:var(--blue)}
+section{padding:48px 0;scroll-margin-top:90px}.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}.sectionHead h2{margin:0;font-size:30px;letter-spacing:-1px}.sectionHead p{margin:6px 0 0;color:var(--muted)}.count{font-size:13px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.product{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 5px 20px rgba(22,88,125,.06);display:flex;flex-direction:column;min-height:205px;transition:.18s}.product:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.productIcon{width:100%;height:190px;border-radius:16px;display:block;overflow:hidden;background:#f5fbfd;border:1px solid var(--line);object-fit:contain}.productIcon img{width:100%;height:100%;object-fit:contain;display:block}.tag{display:inline-block;margin-top:14px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:#4b8bad}.product h3{font-size:16px;margin:7px 0 5px}.meta{font-size:12px;color:var(--muted);min-height:17px}.price{margin-top:auto;padding-top:12px;display:flex;align-items:end;justify-content:space-between;gap:10px}.price strong{font-size:20px;color:var(--blue)}.buy{font-size:12px;padding:9px 11px;border-radius:11px;background:#e8f8ef;color:#087c47;font-weight:800;border:0;cursor:pointer}
+.banner{background:linear-gradient(120deg,#07549a,#25addd);color:white;border-radius:28px;padding:32px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 18px 40px rgba(7,84,154,.2)}.banner h2{margin:0 0 8px;font-size:28px}.banner p{margin:0;color:#d9f6ff}.banner .btn{background:white;color:var(--blue)}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.infoCard{background:white;border:1px solid var(--line);border-radius:20px;padding:22px}.infoCard .ico{font-size:28px}.infoCard h3{margin:10px 0 6px}.infoCard p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}
+footer{padding:40px 0 55px;border-top:1px solid var(--line);background:#fff}.footerGrid{display:flex;justify-content:space-between;gap:30px;align-items:center}.footerBrand{display:flex;gap:12px;align-items:center}.footerBrand img{width:58px}.footerBrand strong{display:block}.footerBrand span{font-size:12px;color:var(--muted)}.social{display:flex;gap:10px}.social a{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#effaff;border:1px solid var(--line)}
+.fab{position:fixed;right:20px;bottom:20px;z-index:30;background:#18b967;color:white;border-radius:999px;padding:15px 18px;font-weight:900;box-shadow:0 12px 28px rgba(24,185,103,.35)}.empty{grid-column:1/-1;text-align:center;padding:45px;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(5,31,48,.55);display:none;place-items:center;z-index:50;padding:20px}.modal.show{display:grid}.modalBox{background:#fff;border-radius:24px;max-width:470px;width:100%;padding:26px;box-shadow:0 25px 70px rgba(0,0,0,.25)}.modalBox h3{margin-top:0}.waChoice{display:flex;gap:10px;flex-direction:column}.waChoice a{background:#e9fbf1;border:1px solid #c8f0d9;padding:13px;border-radius:13px;font-weight:800;color:#087c47}.close{float:right;border:0;background:#f1f5f7;border-radius:10px;padding:7px 10px;cursor:pointer}
+
+.cartBtn{position:relative}.cartCount{position:absolute;top:-7px;right:-7px;min-width:22px;height:22px;border-radius:99px;background:#ef6e9b;color:#fff;font-size:11px;display:grid;place-items:center;border:2px solid #fff}.cartPanel{position:fixed;right:18px;top:86px;width:min(420px,calc(100vw - 28px));max-height:calc(100vh - 105px);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 25px 70px rgba(5,50,75,.25);z-index:45;display:none;overflow:hidden}.cartPanel.show{display:flex;flex-direction:column}.cartHead{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.cartHead h3{margin:0}.cartItems{overflow:auto;padding:12px 16px;display:flex;flex-direction:column;gap:10px}.cartItem{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:14px}.cartItem img{width:52px;height:52px;object-fit:contain;border-radius:10px;background:#f5fbfd}.cartItem strong{font-size:13px}.cartItem small{display:block;color:var(--muted);margin-top:3px}.qty{display:flex;align-items:center;gap:7px;margin-top:6px}.qty button{width:25px;height:25px;border:1px solid var(--line);background:#f7fbfd;border-radius:7px;cursor:pointer}.remove{border:0;background:transparent;color:#c14b69;cursor:pointer;font-size:12px}.cartFoot{padding:16px;border-top:1px solid var(--line);background:#fbfeff}.cartTotal{display:flex;justify-content:space-between;font-size:19px;margin-bottom:12px}.cartEmpty{padding:30px;text-align:center;color:var(--muted)}.addCart{font-size:12px;padding:9px 11px;border-radius:11px;background:#e8f8ef;color:#087c47;font-weight:800;border:0;cursor:pointer}.navCart{margin-left:0}.heroCart{margin-left:auto}
+.floatingCart{position:fixed;right:18px;bottom:82px;z-index:40;border:0;background:var(--blue);color:#fff;border-radius:999px;padding:14px 18px;font-weight:900;box-shadow:0 14px 30px rgba(7,84,154,.28);cursor:pointer;display:flex;align-items:center;gap:8px}.floatingCart .cartCount{position:absolute;top:-7px;right:-5px}.floatingCart:hover{transform:translateY(-2px)}
+\n/* ===== NUEVA EXPERIENCIA DE TIENDA ===== */
+.promoStrip{background:linear-gradient(90deg,#07549a,#24a9dc);color:#fff;padding:10px 0;font-size:13px;font-weight:800;text-align:center}
+.quickLinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.quickLink{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 14px;font-weight:800;color:var(--blue);box-shadow:0 5px 15px rgba(18,83,120,.06)}
+.featureSection{padding-top:20px}.dualHighlights{padding-top:20px}.dualHighlights .wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}.highlightPanel{background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:22px;padding:16px}.highlightPanel .sectionHead{margin-bottom:10px}.highlightPanel .featureGrid{grid-template-columns:repeat(2,1fr);gap:10px}.featureGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.miniProduct{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;position:relative;box-shadow:0 5px 18px rgba(22,88,125,.06)}.miniProduct img{width:100%;height:150px;object-fit:contain;border-radius:13px;background:#f5fbfd}.miniProduct h3{font-size:14px;margin:9px 0 4px}.miniProduct p{font-size:12px;color:var(--muted);margin:0 0 7px}.miniPrice{font-weight:900;color:var(--blue);font-size:17px}.oldPrice{text-decoration:line-through;color:#8b9aa7;font-size:12px;margin-left:6px}.miniBadge{position:absolute;left:20px;top:20px;background:#ef6e9b;color:#fff;border-radius:99px;padding:5px 8px;font-size:10px;font-weight:900}.miniActions{display:flex;gap:6px;margin-top:9px}.miniActions button{flex:1;border:0;border-radius:10px;padding:8px;background:#e8f8ef;color:#087c47;font-weight:800;font-size:11px}.miniActions button.secondary{background:#eef7ff;color:var(--blue)}
+.categoryBar{display:flex;align-items:center;gap:10px;min-width:min(360px,100%)}.filterLabel{font-size:12px;font-weight:900;color:#52697c;white-space:nowrap}.categorySelect{min-width:220px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px 14px;font-weight:800;color:#34566d;outline:none}.categorySelect:focus{border-color:#7bb9d8}.categoryPanel{display:none}.categoryHint{display:none}.cats{display:none}.chip{display:none}.categoryToggle{display:none}.favoriteBtn{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.94);font-size:18px;cursor:pointer;z-index:2}.product{position:relative}.product .offerBadge{position:absolute;left:12px;top:12px;background:#ef6e9b;color:#fff;border-radius:99px;padding:6px 9px;font-size:10px;font-weight:900;z-index:2}.product .featuredBadge{position:absolute;left:12px;top:48px;background:#07549a;color:#fff;border-radius:99px;padding:6px 9px;font-size:10px;font-weight:900;z-index:2}.product.soldout .productIcon{opacity:.72}.soldLabel{display:inline-block;background:#fff0f3;color:#c94f69;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:900;margin-left:5px}.offerPrice{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.offerPrice .current{color:#c14b69}.loadingState{grid-column:1/-1;text-align:center;padding:45px;color:var(--muted)}.comboGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.comboCard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 5px 18px rgba(22,88,125,.06)}.comboCard .ico{font-size:32px}.comboCard h3{margin:10px 0 6px}.comboCard p{margin:0;color:var(--muted);line-height:1.5;font-size:13px}.comboCard .btn{margin-top:14px;width:100%}.whyGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.whyCard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}.whyCard b{display:block;margin:8px 0 5px}.whyCard p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.statBar{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.statPill{background:#fff;border:1px solid var(--line);border-radius:99px;padding:8px 11px;font-size:11px;color:#52697c;font-weight:800}
+
+/* ===== V2: CATEGORIAS DESLIZABLES + ANUNCIO + CONFIG DINAMICA ===== */
+.categoryViewport{position:relative;padding:0 42px}
+.categoryCircles{scroll-behavior:smooth;overscroll-behavior-x:contain}
+.categoryNav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid #eadbe5;background:#fff;color:#ef2d8f;box-shadow:0 8px 22px rgba(40,30,45,.12);font-size:25px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.categoryNav:hover{background:#fff4fa;transform:translateY(-50%) scale(1.04)}
+.categoryNav.prev{left:0}.categoryNav.next{right:0}
+.categoryFade{position:absolute;top:0;bottom:0;width:42px;pointer-events:none;z-index:2}.categoryFade.left{left:42px;background:linear-gradient(90deg,#fff,transparent)}.categoryFade.right{right:42px;background:linear-gradient(270deg,#fff,transparent)}
+.announcementModal{position:fixed;inset:0;background:rgba(23,19,18,.72);display:none;place-items:center;padding:22px;z-index:100;backdrop-filter:blur(3px)}
+.announcementModal.show{display:grid}.announcementBox{position:relative;width:min(920px,100%);border-radius:24px;overflow:hidden;background:linear-gradient(135deg,#f05287,#df4b78);color:#fff;box-shadow:0 30px 90px rgba(0,0,0,.34)}
+.announcementClose{position:absolute;right:14px;top:12px;width:38px;height:38px;border:0;border-radius:50%;background:rgba(0,0,0,.24);color:#fff;font-size:25px;z-index:3;cursor:pointer}
+.announcementInner{display:grid;grid-template-columns:1.05fr .95fr;min-height:390px}.announcementMain{padding:38px 40px 34px}.announcementMain h2{font-size:34px;line-height:1.05;margin:0 0 10px;letter-spacing:-1px}.announcementMain>p{margin:0 0 22px;color:#fff4f8;line-height:1.55}.announcementSection{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:15px 16px;margin-top:12px}.announcementSection h3{margin:0 0 9px;font-size:14px}.announcementItems{display:flex;flex-wrap:wrap;gap:8px}.announcementPill{background:#fff;color:#2c3640;border-radius:999px;padding:8px 11px;font-weight:900;font-size:12px;box-shadow:0 4px 12px rgba(0,0,0,.08)}.announcementAside{background:rgba(255,255,255,.10);padding:38px 32px;display:flex;flex-direction:column;justify-content:center}.announcementAside .payTitle{background:#111;border-radius:12px;padding:10px 15px;display:inline-block;font-weight:1000;letter-spacing:.4px;margin-bottom:14px;align-self:flex-start}.announcementAside .paymentGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.paymentCard{background:#fff;border-radius:16px;padding:16px;color:#273541;text-align:center;font-weight:900;min-height:74px;display:flex;align-items:center;justify-content:center;box-shadow:0 7px 18px rgba(0,0,0,.10)}.paymentCard strong{font-size:18px}.paymentCard small{display:block;font-size:10px;color:#6d7b85;margin-top:3px}.announcementFooter{font-size:11px;color:#ffe7ef;margin-top:14px}
+.adminHeroGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.heroAdminCard{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fbfeff}.heroAdminCard h3{margin:0 0 8px;font-size:14px}.heroAdminPreview{width:100%;height:115px;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#eef6f9;margin-bottom:10px}.heroAdminCard input,.heroAdminCard textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:9px;background:#fff;margin-bottom:8px}.heroAdminCard textarea{min-height:66px;resize:vertical}.configGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.configCard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.configCard h3{margin:0 0 5px}.configCard p{margin:0 0 14px;color:var(--muted);font-size:12px}.announcePreview{background:linear-gradient(135deg,#f05287,#df4b78);color:#fff;border-radius:15px;padding:18px;min-height:160px}.announcePreview h4{margin:0 0 8px;font-size:20px}.announcePreview p{color:#fff4f8;font-size:12px;line-height:1.45}
+@media(max-width:800px){.announcementInner{grid-template-columns:1fr}.announcementAside{padding:22px 26px}.adminHeroGrid,.configGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.categoryViewport{padding:0 32px}.categoryNav{width:32px;height:32px;font-size:21px}.categoryFade.left{left:32px;width:28px}.categoryFade.right{right:32px;width:28px}.announcementModal{padding:12px}.announcementMain{padding:28px 22px 22px}.announcementMain h2{font-size:28px}.announcementAside{padding:20px 22px}.announcementBox{max-height:92vh;overflow:auto}.adminHeroGrid{grid-template-columns:1fr}.paymentCard{min-height:64px}.announcementFooter{margin-bottom:3px}}
+
+@media(max-width:900px){.featureGrid{grid-template-columns:repeat(2,1fr)}.whyGrid{grid-template-columns:repeat(2,1fr)}.comboGrid{grid-template-columns:1fr}}
+@media(max-width:650px){.categoryToggle{display:none}.categoryPanel{display:none!important}.categoryPanel.open{display:none!important}.categoryPanel .cats{display:none!important}.dualHighlights .wrap{grid-template-columns:1fr;gap:12px}.highlightPanel .featureGrid{grid-template-columns:repeat(2,1fr);gap:8px}.featureGrid{grid-template-columns:repeat(2,1fr);gap:10px}.miniProduct img{height:125px}.miniProduct{padding:10px}.whyGrid{grid-template-columns:1fr 1fr}.promoStrip{font-size:11px}.hero h1{letter-spacing:-2px}}
+
+@media(max-width:650px){.cartPanel{right:10px;top:76px;width:calc(100vw - 20px)}.floatingCart{right:12px;bottom:76px;padding:13px 16px}}
+@media(max-width:900px){.heroGrid{grid-template-columns:1fr}.heroLogo{order:-1}.grid{grid-template-columns:repeat(3,1fr)}.info{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:650px){.wrap{padding:0 14px}.nav{height:66px}.brand img{width:44px;height:44px}.toolbar{top:auto}.toolbarRow{display:block}.cats{margin-top:10px}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.product{padding:13px;min-height:190px}.productIcon{width:54px;height:54px}.banner{display:block;padding:25px}.banner .btn{margin-top:18px}.footerGrid{display:block}.social{margin-top:18px}.hero{padding-top:32px}}
+
+  /* ===== MEJORAS DE CATÁLOGO Y REDES ===== */
+  .toolbarRow{display:block}
+  .search{width:100%;margin-bottom:16px}
+  .search input{min-height:60px;padding:17px 20px 17px 52px;font-size:18px;border-radius:16px;box-shadow:0 5px 18px rgba(18,83,120,.08)}
+  .search span{left:18px;top:15px;font-size:25px}
+  .cats{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:10px;overflow:visible;padding:0}
+  .chip{white-space:normal;min-height:52px;border-radius:15px;padding:12px 14px;font-size:13px;text-align:center;display:flex;align-items:center;justify-content:center;line-height:1.2;box-shadow:0 3px 12px rgba(18,83,120,.05)}
+  .product{min-height:390px;padding:18px}
+  .productIcon{height:225px;border-radius:18px}
+  .product h3{font-size:17px;line-height:1.25}
+  .meta{line-height:1.45}
+  .social a{width:auto;min-width:46px;height:44px;padding:0 13px;border-radius:13px;font-weight:900}
+  .social .social-wa{background:#19b96b;color:#fff;border-color:#19b96b}
+  .social .social-fb{background:#1877f2;color:#fff;border-color:#1877f2}
+  .social .social-tt{background:#111;color:#fff;border-color:#111}
+  .social a:hover{transform:translateY(-2px)}
+  @media(max-width:900px){
+    .cats{grid-template-columns:repeat(3,minmax(130px,1fr))}
+    .productIcon{height:210px}
+  }
+  @media(max-width:650px){
+    .toolbarRow{display:block}
+    .search input{min-height:56px;font-size:16px}
+    .cats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .chip{min-height:48px;font-size:12px;padding:10px 8px}
+    .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+    .product{padding:12px;min-height:340px}
+    .productIcon{height:170px}
+    .product h3{font-size:15px}
+    .price{display:block}
+    .price strong{display:block;margin-bottom:9px;font-size:18px}
+    .addCart{width:100%}
+    .social{flex-wrap:wrap}
+  }
+
+
+  /* ===== AJUSTE RESPONSIVE DE IMAGENES + FONDO OCEAN ===== */
+  body{
+    background:
+      linear-gradient(rgba(232,246,251,.78),rgba(220,239,247,.86)),
+      url('./assets/fondo.jpg') center top / cover fixed;
+    background-repeat:no-repeat;
+  }
+
+  /* La imagen debe ocupar todo el ancho disponible del recuadro.
+     El error en Android era width:54px junto con height:170px. */
+  .productIcon{
+    width:100%;
+    height:225px;
+    object-fit:contain;
+  }
+
+  .productIcon img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+
+  @media(max-width:900px){
+    .productIcon{width:100%;height:210px}
+  }
+
+  @media(max-width:650px){
+    body{
+      background:
+        linear-gradient(rgba(232,246,251,.82),rgba(220,239,247,.90)),
+        url('./assets/fondo.jpg') center top / cover scroll;
+    }
+    .productIcon{
+      width:100%;
+      height:170px;
+      min-width:0;
+    }
+    .productIcon img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+  }
+
+.soldout{opacity:.78}.soldLabel{font-size:12px;font-weight:900;color:#c94f69;background:#fff0f3;border-radius:10px;padding:9px 11px}
+
+/* ===== KITS Y RESPONSIVE ===== */
+.kitImage{width:100%;height:170px;object-fit:contain;border-radius:14px;background:#f5fbfd;border:1px solid var(--line);margin-bottom:10px}.kitPrice{font-size:19px;font-weight:900;color:var(--blue);margin-top:8px}.kitOldPrice{text-decoration:line-through;color:#8b9aa7;font-size:12px;margin-left:6px}.kitComponents{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+@media(max-width:650px){.categoryBar{display:block;min-width:100%}.filterLabel{display:block;margin-bottom:7px}.categorySelect{width:100%;min-width:0;padding:14px}.comboGrid{grid-template-columns:1fr}}
+
+/* ===== REDISEÑO HOME ESTILO E-COMMERCE ===== */
+:root{--pink:#ef2d8f;--pink2:#ff5aaa;--hero-dark:#18202a}
+body{background:#faf9f7;color:#27323a}
+.promoStrip{display:none}
+header{position:fixed;left:0;right:0;top:0;background:transparent;border:0;backdrop-filter:none;transition:.28s;z-index:80}
+header.scrolled{background:rgba(255,255,255,.96);box-shadow:0 8px 28px rgba(20,35,45,.10);backdrop-filter:blur(14px)}
+header .nav{height:116px;max-width:1280px;position:relative;justify-content:center}
+.brand{position:absolute;left:50%;top:8px;transform:translateX(-50%)}
+.brand span{color:#fff;font-size:20px;letter-spacing:-.4px}
+.brand small{color:rgba(255,255,255,.78)}
+header.scrolled .brand span{color:#e72a8d} header.scrolled .brand small{color:#6d7f91}
+.navlinks{position:absolute;left:50%;top:76px;transform:translateX(-50%);margin:0;color:#fff;gap:26px;white-space:nowrap}.navlinks a:hover{color:#ffd3ea}
+header.scrolled .navlinks{color:#394b57} header.scrolled .navlinks a:hover{color:var(--pink)}
+.navCart{position:absolute;right:0;top:36px;background:rgba(255,255,255,.14)!important;border-color:rgba(255,255,255,.45)!important;color:#fff!important}
+header.scrolled .navCart{background:#fff!important;border-color:#e4e9ed!important;color:#27323a!important}
+.hero{padding:0;min-height:100svh;height:100vh;max-height:none;position:relative;color:#fff;overflow:hidden}
+.heroGrid{display:block;position:relative;height:100%;max-width:none;padding:0}
+.heroLogo{display:none}
+.heroSlider{position:absolute;inset:0}
+.heroSlide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s ease;background-size:cover;background-position:center}
+.heroSlide.active{opacity:1;visibility:visible}
+.heroSlide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,20,28,.70) 0%,rgba(10,20,28,.40) 42%,rgba(10,20,28,.08) 78%),linear-gradient(0deg,rgba(10,20,28,.36),transparent 35%)}
+.heroContent{position:relative;z-index:2;height:100%;max-width:1280px;margin:auto;padding:170px 34px 90px;display:flex;align-items:center}
+.heroCopy{max-width:700px}.heroCopy .eyebrow{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;backdrop-filter:blur(8px)}
+.hero h1{font-size:clamp(42px,6.2vw,78px);line-height:.98;margin:20px 0 20px;letter-spacing:-3.5px;color:#fff}.hero h1 em{color:#ff62ae}
+.hero p{font-size:18px;line-height:1.6;color:rgba(255,255,255,.88);max-width:650px}
+.hero .btn.primary{background:var(--pink);box-shadow:0 12px 30px rgba(239,45,143,.30)}
+.hero .btn.ghost{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:#fff;backdrop-filter:blur(8px)}
+.heroDots{position:absolute;z-index:4;left:50%;bottom:25px;transform:translateX(-50%);display:flex;gap:8px}.heroDot{width:9px;height:9px;border:0;border-radius:50%;background:rgba(255,255,255,.55);padding:0;cursor:pointer}.heroDot.active{width:27px;border-radius:99px;background:#fff}
+.heroArrow{position:absolute;z-index:4;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.15);color:#fff;font-size:28px;cursor:pointer;backdrop-filter:blur(6px)}.heroArrow.prev{left:22px}.heroArrow.next{right:22px}.heroArrow:hover{background:rgba(255,255,255,.18)}
+.homeCategories{background:#fff;padding:34px 0 30px;border-bottom:1px solid #edf0f2}.homeCategories .sectionHead{margin-bottom:18px}.homeCategories .sectionHead h2{font-size:27px}.categoryCircles{display:flex;gap:20px;overflow-x:auto;padding:4px 4px 10px;scrollbar-width:none}.categoryCircles::-webkit-scrollbar{display:none}.categoryCircle{flex:0 0 108px;border:0;background:transparent;cursor:pointer;text-align:center;color:#364954}.categoryCircle .circleImg{width:88px;height:88px;margin:auto;border-radius:50%;overflow:hidden;border:3px solid #f5d7e7;background:#f8f8f7;box-shadow:0 7px 20px rgba(26,43,52,.10);transition:.2s}.categoryCircle img{width:100%;height:100%;object-fit:cover}.categoryCircle .circleIcon{width:100%;height:100%;display:grid;place-items:center;font-size:34px;background:linear-gradient(145deg,#ffe7f2,#f6f7f8)}.categoryCircle b{display:block;margin-top:10px;font-size:12px;line-height:1.2}.categoryCircle:hover .circleImg,.categoryCircle.active .circleImg{transform:translateY(-3px);border-color:#ef2d8f;box-shadow:0 10px 25px rgba(239,45,143,.18)}.categoryCircle.active b{color:#ef2d8f}
+/* ===== CATEGORIAS PERSONALIZABLES + VISOR DE IMAGEN ===== */
+.categoryCircle{user-select:none}
+.productIcon,.miniProduct img,.kitImage{cursor:zoom-in}
+.imageLightbox{position:fixed;inset:0;background:rgba(7,12,16,.88);display:none;place-items:center;padding:22px;z-index:120;backdrop-filter:blur(5px)}
+.imageLightbox.show{display:grid}
+.imageLightboxBox{position:relative;width:min(900px,96vw);max-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.imageLightbox img{max-width:100%;max-height:78vh;object-fit:contain;border-radius:18px;box-shadow:0 25px 90px rgba(0,0,0,.45);background:#fff}
+.imageLightboxClose{position:absolute;right:-4px;top:-48px;width:42px;height:42px;border:0;border-radius:50%;background:#fff;color:#1d2d36;font-size:25px;cursor:pointer}
+.imageLightboxCaption{margin-top:12px;color:#fff;text-align:center;font-weight:800;font-size:15px}
+@media(max-width:650px){.imageLightbox{padding:14px}.imageLightbox img{max-height:75vh;border-radius:14px}.imageLightboxClose{right:0;top:-48px}}
+
+.toolbar{position:sticky;top:82px;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);padding:14px 0;border-top:1px solid #eef1f3;border-bottom:1px solid #e9edef}.toolbarRow{display:flex;gap:12px;align-items:center}.search input{border-color:#e4e9ed;border-radius:99px;min-height:50px;padding:13px 18px 13px 46px;box-shadow:none}.search span{top:11px}.categoryBar{display:flex;align-items:center;gap:8px}.filterLabel{display:none}.categorySelect{min-width:210px;border-radius:99px;border-color:#e4e9ed;padding:13px 16px}
+section{padding:46px 0}.sectionHead h2{font-size:29px}.sectionHead p{color:#71808a}.quickLinks{display:none}
+.dualHighlights .wrap{grid-template-columns:1fr 1fr}.highlightPanel{background:#fff;border-color:#edf0f2;border-radius:22px}.comboCard,.whyCard,.infoCard{border-color:#edf0f2;box-shadow:0 7px 22px rgba(26,43,52,.05)}
+.product{border-color:#edf0f2;border-radius:18px;background:#fff;box-shadow:0 7px 22px rgba(26,43,52,.05)}.product:hover{box-shadow:0 16px 35px rgba(26,43,52,.11)}.productIcon{background:#fafafa;border-color:#f0f2f3}.price strong,.miniPrice,.kitPrice{color:#df2b87}.buy,.addCart{background:#fff0f7;color:#c51f74}
+.banner{border-radius:24px;background:linear-gradient(110deg,#db2a84,#f25aa5)}
+footer{background:#fff;border-top:1px solid #edf0f2}
+.fab{background:#19b96b}
+@media(max-width:900px){header .nav{height:72px}.brand{position:static;transform:none}.navlinks{position:static;transform:none}.navCart{position:static}.hero{height:100svh;min-height:620px}.heroContent{padding:140px 24px 80px}.toolbar{top:72px}.categoryCircles{gap:13px}.categoryCircle{flex-basis:100px}.categoryCircle .circleImg{width:82px;height:82px}.dualHighlights .wrap{grid-template-columns:1fr}}
+@media(max-width:650px){header .nav{height:64px}.brand{position:static;transform:none}.navlinks{display:none}.navCart{position:static}.brand span{font-size:15px}.brand small{display:none}.hero{height:100svh;min-height:620px}.heroContent{padding:125px 18px 75px;align-items:flex-end}.hero h1{font-size:43px;letter-spacing:-2px}.hero p{font-size:15px}.hero .actions{gap:8px}.hero .actions .btn{padding:11px 14px}.heroArrow{width:38px;height:38px;font-size:22px}.heroArrow.prev{left:10px}.heroArrow.next{right:10px}.homeCategories{padding:27px 0 22px}.homeCategories .sectionHead h2{font-size:23px}.categoryCircles{gap:8px;margin:0 -2px;padding-left:2px}.categoryCircle{flex-basis:82px}.categoryCircle .circleImg{width:70px;height:70px;border-width:2px}.categoryCircle b{font-size:10px;margin-top:7px}.toolbar{top:64px;padding:10px 0}.toolbarRow{display:block}.search{margin-bottom:9px}.search input{min-height:48px;font-size:15px}.categorySelect{width:100%;min-width:0;padding:12px}.grid{grid-template-columns:repeat(2,1fr)}.product{min-height:330px}.productIcon{height:165px}.featureGrid{grid-template-columns:repeat(2,1fr)}.miniProduct img{height:120px}}
+
+/* Animación de botón presionado · tienda pública */
+button,.btn,.categoryCircle,.fab,.floatingCart{transition:transform .12s ease,box-shadow .12s ease,filter .12s ease;}
+button:active,.btn:active,.categoryCircle:active,.fab:active,.floatingCart:active{transform:translateY(2px) scale(.97);filter:brightness(.96);box-shadow:0 3px 10px rgba(20,40,55,.16)!important;}
+.categoryCircle:active{transform:scale(.96);}
+.heroArrow:active{transform:translateY(-50%) scale(.93);}
+
+/* ===== MODO OSCURO ===== */
+.themeToggle{position:fixed;right:18px;top:132px;z-index:95;width:46px;height:46px;border:1px solid rgba(0,0,0,.08);border-radius:50%;background:rgba(255,255,255,.96);color:#17304b;display:grid;place-items:center;font-size:20px;cursor:pointer;box-shadow:0 8px 24px rgba(18,83,120,.16);backdrop-filter:blur(10px);transition:transform .12s ease,box-shadow .12s ease,background .2s ease,color .2s ease}
+.themeToggle:hover{transform:translateY(-2px)}
+body.dark{--ink:#eaf3f7;--muted:#a8bac5;--bg:#0d1820;--card:#17252f;--line:#2b3d48;--shadow:0 12px 35px rgba(0,0,0,.35);background:linear-gradient(180deg,#0c151c,#101d25);color:var(--ink)}
+body.dark header{background:rgba(17,29,37,.94);border-color:#2a3c47}
+body.dark .navlinks{color:#b7c8d2}
+body.dark .navlinks a:hover{color:#6ed5f4}
+body.dark .brand small{color:#9fb2be}
+body.dark .themeToggle{background:#1a2a34;color:#ffe58a;border-color:#3a4d59;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+body.dark .homeCategories{background:#111e27;border-color:#2b3d48}
+body.dark .categoryCircle{color:#dbe8ee}
+body.dark .categoryCircle .circleImg{background:#1a2932;border-color:#3b4c57;box-shadow:0 7px 20px rgba(0,0,0,.25)}
+body.dark .categoryCircle .circleIcon{background:linear-gradient(145deg,#2a2630,#18252d)}
+body.dark .categoryFade.left{background:linear-gradient(90deg,#111e27,transparent)}
+body.dark .categoryFade.right{background:linear-gradient(270deg,#111e27,transparent)}
+body.dark .categoryNav{background:#17252f;border-color:#3b4c57;color:#ff5ba8}
+body.dark .categoryNav:hover{background:#202f39}
+body.dark .toolbar{background:rgba(18,31,40,.96);border-color:#2b3d48}
+body.dark .search input,body.dark .categorySelect{background:#182832;color:#eaf3f7;border-color:#3b4d58}
+body.dark .search input::placeholder{color:#91a5b1}
+body.dark .featureSection,body.dark section{color:var(--ink)}
+body.dark .quickLink{background:#17252f;border-color:#334955;color:#8bdaf4}
+body.dark .highlightPanel{background:rgba(23,37,47,.82);border-color:#30444f}
+body.dark .miniProduct,body.dark .product,body.dark .comboCard,body.dark .whyCard,body.dark .infoCard{background:#17252f;border-color:#2e424e;box-shadow:0 8px 25px rgba(0,0,0,.22)}
+body.dark .productIcon{background:#1c2c36;border-color:#334650}
+body.dark .addCart,body.dark .buy{background:#193a2c;color:#7ff0b4}
+body.dark .meta,body.dark .count{color:#9eb2bd}
+body.dark footer{background:#0f1a22;border-color:#2b3d48}
+body.dark .social a{background:#172832;border-color:#334650}
+body.dark .cartPanel{background:#14232c;border-color:#30444f;box-shadow:0 25px 70px rgba(0,0,0,.5)}
+body.dark .cartHead,body.dark .cartFoot{border-color:#2b3d48;background:#14232c}
+body.dark .cartItem{border-color:#30444f;background:#172832}
+body.dark .cartItem img{background:#1c2c36}
+body.dark .modalBox{background:#17252f;color:var(--ink)}
+body.dark .close{background:#243640;color:#dce9ef}
+body.dark .announcementBox{box-shadow:0 30px 90px rgba(0,0,0,.65)}
+body.dark .sectionHead p,body.dark .hero p{color:#a9bac4}
+@media(max-width:650px){.themeToggle{top:78px;right:12px;width:40px;height:40px;font-size:17px}.navCart{margin-right:48px}.quickLinksSection{padding-top:8px}}
+
+/* ===== MODO OSCURO V5 · CORRECCIONES DE CONTRASTE ===== */
+body.dark{
+  background:#0b151c !important;
+  background-image:none !important;
+  color:#eaf3f7 !important;
+}
+body.dark .promoStrip{background:#0b202b;color:#dff8ff}
+body.dark .homeCategories,
+body.dark #kitsSection,
+body.dark #ofertas,
+body.dark #destacados,
+body.dark #tienda,
+body.dark #envios,
+body.dark #contacto,
+body.dark footer{background:#0f1b23 !important;color:#eaf3f7}
+body.dark .sectionHead h2,
+body.dark .sectionHead b,
+body.dark #tienda h2,
+body.dark #tienda .count{color:#f3f8fb !important;opacity:1 !important}
+body.dark .sectionHead p,
+body.dark #tienda .sectionHead p{color:#a9bac4 !important;opacity:1 !important}
+body.dark .tag{color:#72c9ea !important}
+body.dark .product h3{color:#f4f8fa !important}
+body.dark .price strong{color:#ff5aaa !important}
+body.dark .kitPrice,.dark .kitPrice{color:#ff5aaa !important}
+body.dark .meta,.body.dark .meta{color:#a8bac5 !important}
+body.dark .empty{color:#a8bac5 !important}
+body.dark .toolbar{box-shadow:0 8px 22px rgba(0,0,0,.18)}
+body.dark .toolbar .search input{box-shadow:none}
+body.dark .banner{box-shadow:0 18px 40px rgba(0,0,0,.25)}
+body.dark .featureSection,
+body.dark .dualHighlights,
+body.dark .whyGrid{color:#eaf3f7}
+body.dark .comboCard b,
+body.dark .whyCard b,
+body.dark .infoCard h3,
+body.dark .miniProduct b{color:#f4f8fa}
+body.dark .kitImage{background:#182832;border-color:#334650}
+body.dark .kitComponents{color:#a8bac5}
+body.dark .themeToggle{top:132px}
+@media(max-width:650px){body.dark .themeToggle{top:78px}}
+
+
+/* Android/mobile stability pass */
+@media(max-width:650px){
+  body{overflow-x:hidden;-webkit-text-size-adjust:100%;}
+  .hero{height:88svh;min-height:560px;max-height:760px;}
+  .heroContent{padding:105px 20px 92px;align-items:center;}
+  .heroCopy{max-width:100%;}
+  .hero h1{font-size:37px;line-height:1.04;letter-spacing:-1.5px;margin:16px 0 14px;}
+  .hero p{font-size:15px;line-height:1.5;max-width:100%;}
+  .hero .actions{margin-top:18px;gap:8px;}
+  .hero .actions .btn{padding:11px 13px;font-size:12px;}
+  .heroArrow{top:54%;width:38px;height:38px;}
+  .heroDots{bottom:18px;}
+  .homeCategories{padding:24px 0 20px;}
+  .homeCategories .sectionHead{margin-bottom:12px;}
+  .homeCategories .sectionHead h2{font-size:22px;}
+  .homeCategories .sectionHead p{font-size:13px;line-height:1.4;}
+  .categoryViewport{padding:0 30px;}
+  .categoryCircles{gap:9px;padding:3px 2px 8px;}
+  .categoryCircle{flex:0 0 82px;}
+  .categoryCircle .circleImg{width:68px;height:68px;}
+  .categoryCircle b{font-size:10px;line-height:1.15;}
+  .categoryNav{display:grid!important;width:30px;height:30px;font-size:19px;}
+  .categoryNav.prev{left:0}.categoryNav.next{right:0}
+  .categoryFade.left{left:30px;width:24px}.categoryFade.right{right:30px;width:24px}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script>
+<script src="./supabase-client.js"></script>
+</head>
+<body>
+<div class="promoStrip">🧼 Moldes · Esencias · Ceras · Parafinas · Bases · Insumos para jabones y velas</div><header><div class="wrap nav"><a class="brand" href="#inicio"><img src="./assets/logo.png"><div><span>JABONERIA OCEAN</span><small>OCEAN SOAP</small></div></a><nav class="navlinks"><a href="#tienda">Tienda</a><a href="#envios">Envíos</a><a href="#contacto">Contacto</a></nav><button class="btn ghost cartBtn navCart" onclick="toggleCart()">🛒 Carrito <span class="cartCount" id="cartCount">0</span></button></div></header><button class="themeToggle" id="themeToggle" onclick="toggleTheme()" aria-label="Cambiar modo de color" title="Cambiar modo de color"><span id="themeIcon">🌙</span></button>
+<button class="floatingCart" id="floatingCart" onclick="toggleCart()">🛒 <span>Carrito</span><b class="cartCount" id="floatingCartCount">0</b></button>
+<main id="inicio"><div class="announcementModal" id="announcementModal" role="dialog" aria-modal="true" aria-labelledby="announcementTitle"><div class="announcementBox"><button class="announcementClose" onclick="closeAnnouncement()" aria-label="Cerrar anuncio">×</button><div class="announcementInner"><div class="announcementMain"><h2 id="announcementTitle">Formas de pago y envío</h2><p id="announcementSubtitle">Compra de forma fácil y segura. Coordinamos contigo el método de pago y la agencia de envío.</p><div class="announcementSection"><h3>💳 Formas de pago</h3><div class="announcementItems" id="announcementPayments"><span class="announcementPill">💜 Yape</span><span class="announcementPill">💙 Plin</span><span class="announcementPill">🏦 BCP</span><span class="announcementPill">📱 Banca móvil</span><span class="announcementPill">💳 Tarjetas</span></div></div><div class="announcementSection"><h3>🚚 Formas de envío</h3><div class="announcementItems" id="announcementShipping"><span class="announcementPill">📦 Shalom</span><span class="announcementPill">📦 Marvisur</span><span class="announcementPill">🤝 Otra agencia previa coordinación</span></div></div></div><div class="announcementAside"><span class="payTitle">PAGA COMO PREFIERAS</span><div class="paymentGrid"><div class="paymentCard"><div><strong>Yape</strong><small>Pago móvil</small></div></div><div class="paymentCard"><div><strong>Plin</strong><small>Pago móvil</small></div></div><div class="paymentCard"><div><strong>BCP</strong><small>Transferencia</small></div></div><div class="paymentCard"><div><strong>📱 Banca móvil</strong><small>Desde tu app bancaria</small></div></div></div><div class="announcementFooter">Los datos exactos de pago y el costo de envío se coordinan antes de confirmar tu pedido.</div></div></div></div></div>
+<section class="hero" aria-label="Promociones de Jaboneria Ocean"><div class="heroSlider" id="heroSlider">
+<div class="heroSlide active" style="background-image:url('./assets/hero/slide1.jpg')"><div class="heroContent"><div class="heroCopy"><span class="eyebrow">🌸 Aromas y fragancias</span><h1>El aroma que hace<br><em>especial cada creación.</em></h1><p>Descubre fragancias para jabones, velas y proyectos artesanales. Encuentra aromas florales, frutales, dulces y mucho más.</p><div class="actions"><a class="btn primary" href="#tienda">Ver productos</a><button class="btn ghost" onclick="openWhats()">💬 Comprar por WhatsApp</button></div></div></div></div>
+<div class="heroSlide" style="background-image:url('./assets/hero/slide2.jpg')"><div class="heroContent"><div class="heroCopy"><span class="eyebrow">🧼 Moldes y accesorios</span><h1>Todo empieza con<br><em>un buen molde.</em></h1><p>Moldes 2D, 3D y accesorios para crear jabones con acabados únicos. Explora nuestro catálogo y encuentra tu próximo diseño.</p><div class="actions"><a class="btn primary" href="#tienda" onclick="setCategoryFromHero('Moldes 3D')">Explorar moldes</a><button class="btn ghost" onclick="openWhats()">💬 Consultar disponibilidad</button></div></div></div></div>
+<div class="heroSlide" style="background-image:url('./assets/hero/slide3.jpg')"><div class="heroContent"><div class="heroCopy"><span class="eyebrow">🌿 Aceites y complementos</span><h1>Crea productos que<br><em>se sientan increíbles.</em></h1><p>Aceites esenciales, aceites vegetales, extractos y complementos para darle un toque especial a tus fórmulas.</p><div class="actions"><a class="btn primary" href="#tienda" onclick="setCategoryFromHero('Aceites esenciales')">Comprar ahora</a><button class="btn ghost" onclick="openWhats()">💬 Hablar con nosotros</button></div></div></div></div>
+</div><button class="heroArrow prev" onclick="heroMove(-1)" aria-label="Anterior">‹</button><button class="heroArrow next" onclick="heroMove(1)" aria-label="Siguiente">›</button><div class="heroDots" id="heroDots"><button class="heroDot active" onclick="heroGo(0)" aria-label="Slide 1"></button><button class="heroDot" onclick="heroGo(1)" aria-label="Slide 2"></button><button class="heroDot" onclick="heroGo(2)" aria-label="Slide 3"></button></div></section>
+<section class="homeCategories"><div class="wrap"><div class="sectionHead"><div><h2>Explora por categoría</h2><p>Encuentra rápidamente lo que necesitas para tus jabones y velas.</p></div></div><div class="categoryViewport"><button class="categoryNav prev" onclick="scrollCategories(-1)" aria-label="Ver categorías anteriores">‹</button><div class="categoryFade left"></div><div class="categoryCircles" id="categoryCircles"></div><div class="categoryFade right"></div><button class="categoryNav next" onclick="scrollCategories(1)" aria-label="Ver más categorías">›</button></div></div></section>
+<section id="kits" class="featureSection"><div class="wrap"><div class="sectionHead"><div><h2>🎁 Ideas de combos para emprender</h2><p>Los kits aparecen primero para que puedas encontrarlos rápidamente. Se crean y modifican desde el panel Admin.</p></div></div><div class="comboGrid" id="kitsGrid"><div class="loadingState">Cargando kits...</div></div></div></section>
+<section class="dualHighlights"><div class="wrap"><div id="ofertas" class="highlightPanel"><div class="sectionHead"><div><h2>🔥 Ofertas de hoy</h2><p>Precios especiales seleccionados por Jaboneria Ocean.</p></div></div><div class="featureGrid" id="offersGrid"><div class="loadingState">Cargando ofertas...</div></div></div><div id="destacados" class="highlightPanel"><div class="sectionHead"><div><h2>⭐ Productos destacados</h2><p>Una selección para ayudarte a descubrir productos que pueden interesarte.</p></div></div><div class="featureGrid" id="featuredGrid"><div class="loadingState">Cargando destacados...</div></div></div></div></section>
+<div class="toolbar"><div class="wrap"><div class="toolbarRow"><div class="search"><span>⌕</span><input id="search" placeholder="Buscar productos, moldes, esencias, ceras..." oninput="handleSearch()"></div><div class="categoryBar"><label class="filterLabel" for="categorySelect">🏷️ Filtrar por categoría</label><select id="categorySelect" class="categorySelect" onchange="active=this.value;render()"></select></div></div></div></div>
+<section class="featureSection quickLinksSection"><div class="wrap"><div class="quickLinks"><a class="quickLink" href="#kits">🎁 Kits</a><a class="quickLink" href="#ofertas">🔥 Ofertas</a><a class="quickLink" href="#destacados">⭐ Destacados</a><button class="quickLink" onclick="openWhats()">💬 WhatsApp</button></div></div></section>
+<section id="tienda"><div class="wrap"><div class="sectionHead"><div><h2>Catálogo</h2><p>Precios tomados del catálogo proporcionado · Cada producto tiene su propia imagen numerada.</p></div><div class="count" id="count"></div></div><div class="grid" id="grid"></div></div></section>
+<section><div class="wrap"><div class="sectionHead"><div><h2>✨ Compra más fácil</h2><p>Todo pensado para que encuentres tus insumos y hagas tu pedido rápido.</p></div></div><div class="whyGrid"><div class="whyCard"><div class="ico">🧼</div><b>Muchos insumos en un solo lugar</b><p>Moldes, esencias, bases, ceras, parafinas, aceites, envases y más.</p></div><div class="whyCard"><div class="ico">🔎</div><b>Busca en segundos</b><p>Escribe el producto que necesitas y encuentra opciones sin recorrer todo el catálogo.</p></div><div class="whyCard"><div class="ico">🛒</div><b>Arma tu pedido</b><p>Agrega productos al carrito, revisa tu cotización y envíala por WhatsApp.</p></div><div class="whyCard"><div class="ico">💬</div><b>Atención por WhatsApp</b><p>Consulta disponibilidad, envíos y detalles antes de confirmar tu compra.</p></div></div></div></section>
+<section id="envios"><div class="wrap"><div class="banner"><div><h2>🚚 Envíos a todo el país</h2><p>El catálogo indica que los domicilios tardan 1 día hábil, los envíos están asegurados y se realizan por Shalom o Marvisur.</p></div><button class="btn" onclick="openWhats()">Consultar envío</button></div></div></section>
+<section id="contacto"><div class="wrap"><div class="sectionHead"><div><h2>Compra fácil</h2><p>Elige tus productos y envíanos tu pedido por WhatsApp.</p></div></div><div class="info"><div class="infoCard"><div class="ico">🧼</div><h3>Elige tus insumos</h3><p>Usa el buscador o filtra por categoría para encontrar rápidamente lo que necesitas.</p></div><div class="infoCard"><div class="ico">🛒</div><h3>Arma tu pedido</h3><p>Presiona “Agregar al carrito” en los productos que quieras. Puedes cambiar cantidades y revisar el total antes de enviar la cotización.</p></div><div class="infoCard"><div class="ico">💬</div><h3>Confirma por WhatsApp</h3><p>La página puede manejar uno o varios números de WhatsApp para atención y pedidos.</p></div></div></div></section>
+</main>
+<section id="fotos"><div class="wrap"><div class="banner"><div><h2>📸 Productos variados</h2><p>Moldes, esencias, ceras, parafinas y muchos más insumos para elaborar tus productos. <b>Compra desde Lima y provincias.</b> Emprende y crea con tus propias manos.</p></div></div></div></section>
+<footer><div class="wrap footerGrid"><div class="footerBrand"><img src="./assets/logo.png"><div><strong>Jaboneria Ocean</strong><span>Insumos para elaboración de jabones</span></div></div><div class="social">
+  <button class="btn whats social-wa" onclick="openWhats()">💬 WhatsApp</button>
+  <a class="btn social-tt" href="https://www.tiktok.com/@jaboneria.ocean?_r=1&_t=ZS-98qEY4Or2g6" target="_blank" rel="noopener">♪ TikTok</a>
+  <a class="btn social-fb" href="https://www.facebook.com/share/1DJCXYn6Dt/" target="_blank" rel="noopener">f Facebook</a>
+</div></div></footer>
+<a class="fab" href="javascript:openWhats()">💬 WhatsApp</a>
+<div class="imageLightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada de imagen" onclick="if(event.target.id==='imageLightbox')closeImageLightbox()"><div class="imageLightboxBox"><button class="imageLightboxClose" onclick="closeImageLightbox()" aria-label="Cerrar">×</button><img id="lightboxImage" src="./assets/logo.png" alt=""><div id="lightboxCaption" class="imageLightboxCaption"></div></div></div>
+<div class="cartPanel" id="cartPanel"><div class="cartHead"><h3>🛒 Tu carrito</h3><button class="close" onclick="toggleCart()">✕</button></div><div class="cartItems" id="cartItems"></div><div class="cartFoot"><div class="cartTotal"><span>Total estimado</span><strong id="cartTotal">S/ 0.00</strong></div><button class="btn whats" style="width:100%" onclick="sendCartWhatsApp()">💬 Enviar cotización por WhatsApp</button></div></div>
+<div class="modal" id="modal"><div class="modalBox"><button class="close" onclick="closeWhats()">✕</button><h3>Escríbenos por WhatsApp</h3><p id="modalText">Escríbenos directamente a nuestro WhatsApp: +51 904 755 324</p><div class="waChoice" id="waChoice"></div><p style="font-size:12px;color:#7a8996;margin-bottom:0">WhatsApp de atención: <b>+51 904 755 324</b>. Al enviar la cotización, WhatsApp abrirá el mensaje con la lista, cantidades y total estimado.</p></div></div>
+
+<script>
+
+/* ===== HOMEPAGE CONFIG / ANUNCIO ===== */
+const DEFAULT_HOMEPAGE_CONFIG={
+  announcement_enabled:true,
+  announcement_title:'Formas de pago y envío',
+  announcement_subtitle:'Compra de forma fácil y segura. Coordinamos contigo el método de pago y la agencia de envío.',
+  announcement_payments:['💜 Yape','💙 Plin','🏦 BCP','📱 Banca móvil','💳 Tarjetas'],
+  announcement_shipping:['📦 Shalom','📦 Marvisur','🤝 Otra agencia previa coordinación'],
+  hero_slides:[
+    {image:'./assets/hero/slide1.jpg',eyebrow:'🌸 Aromas y fragancias',title:'El aroma que hace\nespecial cada creación.',text:'Descubre fragancias para jabones, velas y proyectos artesanales. Encuentra aromas florales, frutales, dulces y mucho más.'},
+    {image:'./assets/hero/slide2.jpg',eyebrow:'🧼 Moldes y accesorios',title:'Todo empieza con\nun buen molde.',text:'Moldes 2D, 3D y accesorios para crear jabones con acabados únicos. Explora nuestro catálogo y encuentra tu próximo diseño.'},
+    {image:'./assets/hero/slide3.jpg',eyebrow:'🌿 Aceites y complementos',title:'Crea productos que\nse sientan increíbles.',text:'Aceites esenciales, aceites vegetales, extractos y complementos para darle un toque especial a tus fórmulas.'}
+  ]
+};
+let homepageConfig=JSON.parse(JSON.stringify(DEFAULT_HOMEPAGE_CONFIG));
+function escAttr(v){return escHtml(v).replace(/\\/g,'&#92;').replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
+function showAnnouncement(){const m=document.getElementById('announcementModal');if(!m)return;if(homepageConfig.announcement_enabled!==false){m.classList.add('show');document.body.style.overflow='hidden';}}
+function closeAnnouncement(){const m=document.getElementById('announcementModal');if(m)m.classList.remove('show');document.body.style.overflow='';sessionStorage.setItem('oceanAnnouncementClosed','1');}
+function renderAnnouncement(){
+  const title=document.getElementById('announcementTitle'),sub=document.getElementById('announcementSubtitle');
+  if(title)title.textContent=homepageConfig.announcement_title||DEFAULT_HOMEPAGE_CONFIG.announcement_title;
+  if(sub)sub.textContent=homepageConfig.announcement_subtitle||DEFAULT_HOMEPAGE_CONFIG.announcement_subtitle;
+  const pay=document.getElementById('announcementPayments'),ship=document.getElementById('announcementShipping');
+  if(pay)pay.innerHTML=(homepageConfig.announcement_payments||[]).map(x=>`<span class="announcementPill">${escHtml(x)}</span>`).join('');
+  if(ship)ship.innerHTML=(homepageConfig.announcement_shipping||[]).map(x=>`<span class="announcementPill">${escHtml(x)}</span>`).join('');
+}
+function applyHeroConfig(){
+  const slides=[...document.querySelectorAll('.heroSlide')];
+  (homepageConfig.hero_slides||[]).slice(0,3).forEach((cfg,i)=>{const el=slides[i];if(!el)return;const img=cfg.image||DEFAULT_HOMEPAGE_CONFIG.hero_slides[i].image;el.style.backgroundImage=`url("${String(img).replace(/"/g,'\\"')}")`;const eyebrow=el.querySelector('.eyebrow'),h1=el.querySelector('h1'),p=el.querySelector('p');if(eyebrow)eyebrow.textContent=cfg.eyebrow||'';if(h1)h1.innerHTML=escHtml(cfg.title||'').replace(/\n/g,'<br>');if(p)p.textContent=cfg.text||'';});
+}
+function scrollCategories(direction){const box=document.getElementById('categoryCircles');if(box)box.scrollBy({left:direction*Math.max(260,box.clientWidth*.72),behavior:'smooth'});}
+function refreshCategoryArrows(){const box=document.getElementById('categoryCircles');if(!box)return;const wrap=box.parentElement;const prev=wrap?.querySelector('.categoryNav.prev'),next=wrap?.querySelector('.categoryNav.next');const can=box.scrollWidth>box.clientWidth+8;if(prev)prev.style.display=can?'grid':'none';if(next)next.style.display=can?'grid':'none';}
+
+/* ===== HERO + CATEGORIAS CIRCULARES ===== */
+let heroIndex=0, heroTimer=null;
+function heroGo(index){
+  const slides=[...document.querySelectorAll('.heroSlide')], dots=[...document.querySelectorAll('.heroDot')];
+  if(!slides.length)return; heroIndex=(index+slides.length)%slides.length;
+  slides.forEach((el,i)=>el.classList.toggle('active',i===heroIndex)); dots.forEach((el,i)=>el.classList.toggle('active',i===heroIndex));
+}
+function heroMove(delta){heroGo(heroIndex+delta);heroRestart();}
+function heroRestart(){clearInterval(heroTimer);heroTimer=setInterval(()=>heroGo(heroIndex+1),6000);}
+function setCategoryFromHero(name){setTimeout(()=>{const found=buildCategories().find(c=>categoryKey(c)===categoryKey(name));if(found){active=found;render();const sel=document.getElementById('categorySelect');if(sel)sel.value=found;}},0);}
+function renderCategoryCircles(){
+  const box=document.getElementById('categoryCircles'); if(!box)return;
+  const ordered=buildCategories();
+  const settingsMap=new Map((categorySettings||[]).map(c=>[categoryKey(c.name),c]));
+  box.innerHTML=ordered.map(c=>{
+    const cfg=settingsMap.get(categoryKey(c))||{};
+    const src=cfg.image_url|| (categoryKey(c)==='todos'?'./assets/logo.png':'');
+    const icon=cfg.emoji||'✨';
+    const isActive=categoryKey(c)===categoryKey(active);
+    const content=src?`<img src="${escHtml(src)}" alt="${escHtml(c)}" onerror="this.onerror=null;this.style.display='none';this.parentNode.innerHTML='<span class=\"circleIcon\">${escHtml(icon)}</span>'">`:`<span class="circleIcon">${escHtml(icon)}</span>`;
+    const safeName=escHtml(c).replace(/'/g,'\\\'');
+    return `<button class="categoryCircle ${isActive?'active':''}" onclick="chooseCategory('${safeName}')"><div class="circleImg">${content}</div><b>${escHtml(c)}</b></button>`;
+  }).join('');
+  requestAnimationFrame(refreshCategoryArrows);
+}
+function chooseCategory(name){active=name;const sel=document.getElementById('categorySelect');if(sel)sel.value=name;render();document.getElementById('tienda')?.scrollIntoView({behavior:'smooth',block:'start'});}
+function startHeroExperience(){heroRestart();window.addEventListener('resize',refreshCategoryArrows,{passive:true});const header=document.querySelector('header');const onScroll=()=>header?.classList.toggle('scrolled',window.scrollY>40);onScroll();window.addEventListener('scroll',onScroll,{passive:true});renderCategoryCircles();}
+
+// CONFIGURA AQUÍ LOS WHATSAPP DE LA TIENDA
+const WHATSAPP_NUMBERS = [ "51904755324" ];
+
+// Estado de la tienda: se inicializa antes de cualquier render para evitar que el catálogo quede en "Cargando...".
+let active = 'Todos';
+let categoriesOpen = false;
+let cart = [];
+let favorites = new Set();
+let catalogReady = false;
+let kits = [];
+
+try { favorites = new Set(JSON.parse(localStorage.getItem('jaboneriaOceanFavorites') || '[]')); } catch (_) { favorites = new Set(); }
+
+let products = [
+  ['Bases de glicerina', 'Blanca · 1 kg', 'S/ 26.00', 'Bases', '🧼', 'Base blanca'],
+  ['Bases de glicerina', 'Blanca · 5 kg', 'S/ 25.00 c/u', 'Bases', '🧼', 'Base blanca'],
+  ['Bases de glicerina', 'Blanca · 10 kg', 'S/ 24.50 c/u', 'Bases', '🧼', 'Base blanca'],
+  ['Bases de glicerina', 'Ámbar · 1 kg', 'S/ 26.00', 'Bases', '🧼', 'Base ámbar'],
+  ['Bases de glicerina', 'Ámbar · 5 kg', 'S/ 25.00 c/u', 'Bases', '🧼', 'Base ámbar'],
+  ['Bases de glicerina', 'Ámbar · 10 kg', 'S/ 24.50 c/u', 'Bases', '🧼', 'Base ámbar'],
+  ['Bases de glicerina', 'Transparente cristal · 1 kg', 'S/ 29.00', 'Bases', '✨', 'Base cristal'],
+  ['Bases de glicerina', 'Transparente cristal · 5 kg', 'S/ 28.00 c/u', 'Bases', '✨', 'Base cristal'],
+  ['Bases de glicerina', 'Transparente cristal · 10 kg', 'S/ 27.50 c/u', 'Bases', '✨', 'Base cristal'],
+  ...['Coco','Bambú','Maracuyá','Naranja','Eucalipto','Manzanilla','Rosas','Chocolate','Tutifruti','Jazmín','Café','Limón','Lavanda','Chicle','Hierba Luisa','Manzana','Fresas','Almendras','Bebé','Vainilla','Brisa Marina','Rosa Búlgara','Avena','Calvin Klein','Manzana Canela','Té Verde','Paco Rabanne','Talco BB','Miel','Sábila','Uva','Sándalo','Frutos Rojos','Leche','Pachulí','Cherry','Algodón','Violeta','Canela','Cereza','Channel','Durazno','Frambuesa','Gardenia','Mandarina','Mango','Menta','Mil Flores','Orquídea','Piña','Ruda','Sandía','Romero','Avena y Miel'].map(n=>['Fragancia '+n,'20 ml','S/ 18.00','Fragancias','🌸',n]),
+  ...['Melissa','Lavanda','Árbol de té','Limón','Menta','Eucalipto','Bergamota','Clavo de olor','Romero','Citronela','Rosas','Ylang Ylang','Mandarina','Jazmín','Naranja','Cyprees','Anís'].map(n=>['Aceite esencial '+n,'15 ml','S/ 28.00','Aceites esenciales','🌿',n]),
+  ...['Almendras','Semilla de uva','Argán','Rosas','Castaña','Coco','Eucalipto','Maracuyá','Rosa mosqueta','Aguaje','Copaiba','Chía','Girasol','Oliva','Jojoba','Ricino'].map(n=>['Aceite vegetal '+n,'30 ml','S/ 28.00','Aceites vegetales','🥥',n]),
+  ['Vitamina E', '10 ml', 'S/ 18.00', 'Complementos', '💧', 'Vitamina E'],
+  ['Conservante Procidé', '10 ml', 'S/ 15.00', 'Complementos', '🧪', 'Conservante'],
+  ['Vitamina E', '30 ml', 'S/ 36.00', 'Complementos', '🧪', 'Conservante'],
+  ...['Blanca','Verde','Roja','Rosa'].map(n=>['Arcilla '+n,'50 g / 100 g','S/ 11.00 / S/ 23.00','Arcillas','🪨',n]),
+  ...['Zanahoria','Menta','Áloe vera','Lavanda','Uva','Avena','Té verde','Manzanilla','Caléndula','Orégano','Hamamelis','Rosas'].map(n=>['Extracto natural de '+n,'30 ml','S/ 28.00','Extractos naturales','🌱',n]),
+  ...['Carbón','Polvo de arroz','Manzanilla','Avena orgánica','Cacao','Coco','Romero','Lúcuma','Eucalipto','Almendras','Limón','Flor de jamaica','Ruda','Ortiga','Neem','Flor de caléndula','Lavanda','Menta','Naranja','Sangre de grado','Sábila','Camu camu','Beterraga','Chía','Hierba luisa','Manzanilla','Fenogreco','Jengibre','Moringa','Semillas de girasol','Muña'].map(n=>['Planta pulverizada · '+n,'50 g / 100 g','S/ 11.00 / S/ 23.00','Plantas pulverizadas','🌿',n]),
+  ...['Rojo','Azul','Amarillo','Verde'].map(n=>['Colorante líquido migrante · '+n,'10 ml','S/ 10.00','Colorantes','🎨',n]),
+  ...['Rojo','Azul','Amarillo','Verde','Negro','Marrón','Morado','Rosa','Naranja'].map(n=>['Colorante líquido no migrante · '+n,'10 ml','S/ 13.50 c/u','Colorantes','🎨',n]),
+  ...['Azul','Amarillo','Verde','Negro','Marrón','Morado','Dorado','Naranja'].map(n=>['Mica grado cosmético · '+n,'10 g','S/ 10.50 c/u','Micas','✨',n]),
+  ['Cocobetaina', '250 ml', 'S/ 15.00', 'Espumantes', '🫧', 'Cocobetaina'],
+  ['Cocobetaina', '1/2 litro', 'S/ 26.00', 'Espumantes', '🫧', 'Cocobetaina'],
+  ['Cocobetaina', '1 litro', 'S/ 50.00', 'Espumantes', '🫧', 'Cocobetaina'],
+  ['Glicerina líquida', '250 ml', 'S/ 15.00', 'Espumantes', '💧', 'Glicerina líquida'],
+  ['Vaselina líquida', '250 ml', 'S/ 15.00', 'Espumantes', '💧', 'Vaselina líquida'],
+  ['Fijador de aroma', '10 ml', 'S/ 15.00', 'Espumantes', '🧴', 'Fijador'],
+  ['Manteca de cacao', '35 g', 'S/ 18.00', 'Aditivos', '🧈', 'Manteca de cacao'],
+  ['Manteca de karité', '35 g', 'S/ 16.00', 'Aditivos', '🧈', 'Manteca de karité'],
+  ['Manteca de karité', '65 g', 'S/ 20.00', 'Aditivos', '🧈', 'Manteca de karité'],
+  ['Balanza gramera', 'Unidad', 'S/ 20.00', 'Implementos', '⚖️', 'Balanza'],
+  ['Juego de cortador para jabones', 'Juego', 'S/ 85.00', 'Implementos', '🔪', 'Cortador'],
+  ['Termómetro', 'Unidad', 'S/ 20.00', 'Implementos', '🌡️', 'Termómetro'],
+  ['Cortador de bases', 'Unidad', 'S/ 18.00', 'Implementos', '🧰', 'Cortador'],
+  ['Bolsa de organza N.º 1', '7 × 9 cm · unidad', 'S/ 2.00', 'Bolsas de organza', '🎁', 'Organza 1'],
+  ['Bolsa de organza N.º 1', '12 unidades', 'S/ 18.00', 'Bolsas de organza', '🎁', 'Organza 1'],
+  ['Bolsa de organza N.º 1', '25 unidades', 'S/ 30.00', 'Bolsas de organza', '🎁', 'Organza 1'],
+  ['Bolsa de organza N.º 2', '9 × 12 cm · unidad', 'S/ 2.00', 'Bolsas de organza', '🎁', 'Organza 2'],
+  ['Bolsa de organza N.º 2', '12 unidades', 'S/ 18.00', 'Bolsas de organza', '🎁', 'Organza 2'],
+  ['Bolsa de organza N.º 2', '25 unidades', 'S/ 30.00', 'Bolsas de organza', '🎁', 'Organza 2'],
+  ['Bolsa de organza N.º 3', '10 × 16 cm · unidad', 'S/ 2.00', 'Bolsas de organza', '🎁', 'Organza 3'],
+  ['Bolsa de organza N.º 3', '12 unidades', 'S/ 18.00', 'Bolsas de organza', '🎁', 'Organza 3'],
+  ['Bolsa de organza N.º 3', '25 unidades', 'S/ 30.00', 'Bolsas de organza', '🎁', 'Organza 3'],
+  ['Parafina Premium', '1 kg', 'S/ 38.00', 'Parafinas', '🕯️', 'Parafina Premium'],
+  ['Parafina en gel', '1 kg', 'S/ 68.00', 'Parafinas', '🕯️', 'Parafina en gel'],
+  ['Parafina en gel', '1/2 kilo', 'S/ 38.00', 'Parafinas', '🕯️', 'Parafina en gel 1/2 kilo'],
+  ['Molde 3D Virgen Guadalupe', '60 g', 'S/ 35.00', 'Moldes 3D', '🕯️', 'Virgen Guadalupe'],
+  ['Molde 3D Osito Sentado 01', '30 g', 'S/ 15.00', 'Moldes 3D', '🧸', 'Osito 01'],
+  ['Molde 3D Osito Sentado 02', '20 g', 'S/ 20.00', 'Moldes 3D', '🧸', 'Osito 02'],
+  ['Molde 3D Osito Sentado 03', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🧸', 'Osito 03'],
+  ['Molde 3D Osito Sentado 04', '20 g', 'S/ 20.00', 'Moldes 3D', '🧸', 'Osito 04'],
+  ['Molde 3D Osito Sentado 05', '20 g', 'S/ 20.00', 'Moldes 3D', '🧸', 'Osito 05'],
+  ['Molde 3D Osito Corazón 13', 'Unidad', 'S/ 25.00', 'Moldes 3D', '🧸', 'Osito Corazón 13'],
+  ['Molde 3D Osito Winni Pooh', 'Unidad', 'S/ 32.00', 'Moldes 3D', '🧸', 'Winni Pooh'],
+  ['Molde 3D Osito', 'Unidad', 'S/ 13.00', 'Moldes 3D', '🧸', 'Osito'],
+  ['Molde 3D Osito Kawaii', 'Unidad', 'S/ 20.00 (Agotado)', 'Moldes 3D', '🧸', 'Osito Kawaii'],
+  ['Molde 3D Osito Calabaza', 'Unidad', 'S/ 22.00', 'Moldes 3D', '🧸', 'Osito Calabaza'],
+  ['Molde 3D Osito Rosas', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🧸', 'Osito Rosas'],
+  ['Molde 3D Elefante 01', '45 g', 'S/ 20.00', 'Moldes 3D', '🐘', 'Elefante 01'],
+  ['Molde 3D Elefante 03', '45 g', 'S/ 28.50', 'Moldes 3D', '🐘', 'Elefante 03'],
+  ['Molde 3D Elefante 04', 'Unidad', 'S/ 45.00', 'Moldes 3D', '🐘', 'Elefante 04'],
+  ['Molde 3D Elefante 05', 'Unidad', 'S/ 45.00', 'Moldes 3D', '🐘', 'Elefante 05'],
+  ['Molde 3D Leoncito', '35 g', 'S/ 20.00', 'Moldes 3D', '🦁', 'Leoncito'],
+  ['Molde 3D Jirafa', '45 g', 'S/ 28.00', 'Moldes 3D', '🦒', 'Jirafa'],
+  ['Molde 3D Llamita', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🦙', 'Llamita'],
+  ['Molde 3D Mini Oveja', 'Unidad', 'S/ 10.00', 'Moldes 3D', '🐑', 'Mini Oveja'],
+  ['Molde 3D Gatito', 'Unidad', 'S/ 18.00', 'Moldes 3D', '🐱', 'Gatito'],
+  ['Molde 3D Oveja Kawaii', '30 g', 'S/ 24.00', 'Moldes 3D', '🐑', 'Oveja Kawaii'],
+  ['Molde 3D Búho', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🦉', 'Búho'],
+  ['Molde 3D Conejita', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🐰', 'Conejita'],
+  ['Molde 3D Chanchito 01', 'Unidad', 'S/ 22.00', 'Moldes 3D', '🐷', 'Chanchito 01'],
+  ['Molde 3D Chanchito 03', 'Unidad', 'S/ 22.00', 'Moldes 3D', '🐷', 'Chanchito 03'],
+  ['Molde 3D Vaca', 'Unidad', 'S/ 23.00', 'Moldes 3D', '🐮', 'Vaca'],
+  ['Molde 3D Bebito 01', 'Unidad', 'S/ 35.00', 'Moldes 3D', '👶', 'Bebito 01'],
+  ['Molde 3D Bebito 02', 'Unidad', 'S/ 45.00', 'Moldes 3D', '👶', 'Bebito 02'],
+  ['Molde 3D Bebito 03', 'Unidad', 'S/ 45.00', 'Moldes 3D', '👶', 'Bebito 03'],
+  ['Molde 3D Bebito 04', 'Unidad', 'S/ 24.00', 'Moldes 3D', '👶', 'Bebito 04'],
+  ['Molde 3D Molde Angelito', '38 g', 'S/ 20.00', 'Moldes 3D', '👼', 'Angelito'],
+  ['Molde 3D Angelitos', 'Unidad', 'S/ 28.00', 'Moldes 3D', '👼', 'Angelitos'],
+  ['Molde 3D Angelito Pequeño', 'Unidad', 'S/ 15.00', 'Moldes 3D', '👼', 'Angelito Pequeño'],
+  ['Molde 3D Angelitos Grandes', 'Unidad', 'S/ 32.00 c/u', 'Moldes 3D', '👼', 'Angelitos Grandes'],
+  ['Molde 3D Arándano', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🫐', 'Arándano'],
+  ['Molde 3D Frambuesa', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🍓', 'Frambuesa'],
+  ['Molde 3D Margarita', '18 g', 'S/ 20.00', 'Moldes 3D', '🌼', 'Margarita'],
+  ['Molde 3D Girasol', '18 g', 'S/ 20.00', 'Moldes 3D', '🌻', 'Girasol'],
+  ['Molde 3D Peonía Pequeña', 'Unidad', 'S/ 28.00', 'Moldes 3D', '🌸', 'Peonía Pequeña'],
+  ['Molde 3D Flor', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🌸', 'Flor'],
+  ['Molde 3D Flor Navideña', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🌺', 'Flor Navideña'],
+  ['Molde 3D Mini Flores de Cerezo', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🌸', 'Flores de Cerezo'],
+  ['Molde 3D Corazón Tejido Pequeño', 'Unidad', 'S/ 16.00', 'Moldes 3D', '💖', 'Corazón Tejido'],
+  ['Molde 3D Virgencita 01', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🕯️', 'Virgencita 01'],
+  ['Molde 3D Virgencita 02', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🕯️', 'Virgencita 02'],
+  ['Molde 3D Cubo Pequeño', '45 g', 'S/ 25.00', 'Moldes 3D', '🧊', 'Cubo Pequeño'],
+  ['Molde 3D Burbuja x6', '120 g', 'S/ 32.00', 'Moldes 3D', '🫧', 'Burbuja x6'],
+  ['Molde 3D Burbuja Corazón', '140 g', 'S/ 35.00', 'Moldes 3D', '🫧', 'Burbuja Corazón'],
+  ['Molde 3D Compromiso', 'Unidad', 'S/ 26.00', 'Moldes 3D', '💍', 'Compromiso'],
+  ['Molde 3D Flor (18 soles)', 'Unidad', 'S/ 18.00', 'Moldes 3D', '🌸', 'Flor (18)'],
+  ['Molde 3D Corazón Floral', 'Unidad', 'S/ 18.00', 'Moldes 3D', '💖', 'Corazón Floral'],
+  ['Molde 3D Flor (60g)', '60 g', 'S/ 20.00', 'Moldes 3D', '🌸', 'Flor (60g)'],
+  ['Molde 3D Virgen 3D', 'Unidad', 'S/ 45.00', 'Moldes 3D', '🕯️', 'Virgen 3D'],
+  ['Molde 3D Flor (48g)', '48 g', 'S/ 20.00 (Agotado)', 'Moldes 3D', '🌸', 'Flor (48g)'],
+  ['Molde 3D Cuerpo de Mujer', '90 g', 'S/ 28.00', 'Moldes 3D', '🧍‍♀️', 'Cuerpo de Mujer'],
+  ['Molde 3D Angel Mujer', '80 g', 'S/ 25.00 (Agotado)', 'Moldes 3D', '👼', 'Angel Mujer'],
+  ['Molde 3D Cruz', 'Unidad', 'S/ 22.00', 'Moldes 3D', '✝️', 'Cruz'],
+  ['Molde 3D Mini Rosas', 'Unidad', 'S/ 15.00 (Agotado)', 'Moldes 3D', '🌹', 'Mini Rosas'],
+  ['Molde 3D Mini Hojas de Acebo', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🌿', 'Hojas de Acebo'],
+  ['Molde 3D Diosa', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🗽', 'Diosa'],
+  ['Molde 3D Piecito con Mano', 'Unidad', 'S/ 28.00', 'Moldes 3D', '👣', 'Piecito con Mano'],
+  ['Molde 3D Madre y BB', 'Unidad', 'S/ 28.00', 'Moldes 3D', '👩‍👦', 'Madre y BB'],
+  ['Molde 3D Madre con Hija', 'Unidad', 'S/ 27.00 (Agotada)', 'Moldes 3D', '👩‍👧', 'Madre con Hija'],
+  ['Molde 3D Mama y Bebe 2', 'Unidad', 'S/ 26.00', 'Moldes 3D', '👩‍👦', 'Mama y Bebe 2'],
+  ['Molde 3D Rosa Espinal', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🌹', 'Rosa Espinal'],
+  ['Molde 3D Madre e Hijo', 'Unidad', 'S/ 18.00 / S/ 28.00', 'Moldes 3D', '👩‍👦', 'Madre e Hijo'],
+  ['Molde 3D Buda 3D', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🧘', 'Buda 3D'],
+  ['Molde 3D Suculenta', 'Unidad', 'S/ 28.00 (Agotado)', 'Moldes 3D', '🪴', 'Suculenta'],
+  ['Molde 3D Flor 05', 'Unidad', 'S/ 23.00 (Agotado)', 'Moldes 3D', '🌸', 'Flor 05'],
+  ['Molde 3D Flor Cerámico', 'Unidad', 'S/ 18.00', 'Moldes 3D', '🌸', 'Flor Cerámico'],
+  ['Molde 3D Conejito Cerámico', 'Unidad', 'S/ 24.00', 'Moldes 3D', '🐰', 'Conejito Cerámico'],
+  ['Molde 3D Niña Graduada', '75 g', 'S/ 45.00', 'Moldes 3D', '🎓', 'Niña Graduada'],
+  ['Molde 3D Niño Graduado', '75 g', 'S/ 50.00', 'Moldes 3D', '🎓', 'Niño Graduado'],
+  ['Molde 3D Pastorcita', 'Unidad', 'S/ 32.00', 'Moldes 3D', '🐑', 'Pastorcita'],
+  ['Molde 3D Niña con Ramo', 'Unidad', 'S/ 28.00', 'Moldes 3D', '💐', 'Niña con Ramo'],
+  ['Molde 3D Taza Macetero', 'Unidad', 'S/ 25.00', 'Moldes 3D', '☕', 'Taza Macetero'],
+  ['Molde 3D Corazón', 'Unidad', 'S/ 20.00', 'Moldes 3D', '❤️', 'Corazón'],
+  ['Molde 3D Familia Navideña', 'Unidad', 'S/ 45.00', 'Moldes 3D', '🎄', 'Familia Navideña'],
+  ['Molde 3D Santa Claus', 'Unidad', 'S/ 37.00', 'Moldes 3D', '🎅', 'Santa Claus'],
+  ['Molde 3D Molde Deseo 2026', 'Unidad', 'S/ 25.00 c/u', 'Moldes 3D', '✨', 'Deseo 2026'],
+  ['Molde 3D Árbol Navideño', '65 g', 'S/ 25.00', 'Moldes 3D', '🎄', 'Árbol Navideño'],
+  ['Molde 3D Molde Navideño', 'Unidad', 'S/ 15.00 c/u', 'Moldes 3D', '🎄', 'Navideño'],
+  ['Molde 3D Árbol Navideño 03', 'Unidad', 'S/ 48.00', 'Moldes 3D', '🎄', 'Árbol Navideño 03'],
+  ['Molde 3D Árbol Pequeño 01', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🎄', 'Árbol Peq 01'],
+  ['Molde 3D Árbol Geométrico', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🎄', 'Árbol Geom'],
+  ['Molde 3D Árbol Pequeño 02', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🎄', 'Árbol Peq 02'],
+  ['Molde 3D Árbol Geométrico Grande', 'Unidad', 'S/ 20.00', 'Moldes 3D', '🎄', 'Árbol Geom Gde'],
+  ['Molde 3D Deseo x4', 'Unidad', 'S/ 65.00', 'Moldes 3D', '✨', 'Deseo x4'],
+  ['Molde 3D Árbol Pequeño', 'Unidad', 'S/ 15.00', 'Moldes 3D', '🎄', 'Árbol Pequeño'],
+  ['Molde 3D Osito Sentado 08', 'Unidad', 'S/ 20.00 (Agotado)', 'Moldes 3D', '🧸', 'Osito 08'],
+  ['Molde 2D Rectangular x6', '90 g', 'S/ 20.00', 'Moldes 2D', '🧼', 'Rectangular x6'],
+  ['Molde 2D Rectangular x9', '140 g', 'S/ 24.00', 'Moldes 2D', '🧼', 'Rectangular x9'],
+  ['Molde 2D Cuadrado x6', 'Unidad', 'S/ 20.00', 'Moldes 2D', '🧼', 'Cuadrado x6'],
+  ['Molde 2D Rectangular x4 con Diseño', 'Unidad', 'S/ 20.00', 'Moldes 2D', '🧼', 'Rect x4 Diseño'],
+  ['Molde 2D Rectangular x6 con Diseño', '100 g', 'S/ 22.00', 'Moldes 2D', '🧼', 'Rect x6 Diseño'],
+  ['Molde 2D Ovalado x6', '100 g', 'S/ 22.00', 'Moldes 2D', '🧼', 'Ovalado x6'],
+  ['Molde 2D Oxagonal x6', '80 g', 'S/ 22.00', 'Moldes 2D', '🧼', 'Oxagonal x6'],
+  ['Molde 2D Árbol de Vida', '120 g', 'S/ 23.00', 'Moldes 2D', '🌳', 'Árbol de Vida'],
+  ['Molde 2D Angel x4', '70 g', 'S/ 22.00', 'Moldes 2D', '👼', 'Angel x4'],
+  ['Molde 2D Ovalado x6 (90g)', '90 g', 'S/ 20.00', 'Moldes 2D', '🧼', 'Ovalado x6 90g'],
+  ['Molde 2D Ovalados x4', '100 g', 'S/ 20.00', 'Moldes 2D', '🧼', 'Ovalados x4'],
+  ['Molde 2D Ovalados Pequeños', '15 g', 'S/ 20.00', 'Moldes 2D', '🧼', 'Ovalados Pequeños'],
+  ['Molde 2D Panal de Abeja', 'Unidad', 'S/ 18.00', 'Moldes 2D', '🍯', 'Panal de Abeja'],
+  ['Molde 2D Figuras Variadas x6', 'Unidad', 'S/ 21.00', 'Moldes 2D', '🟢', 'Figuras Variadas'],
+  ['Molde 2D Copo de Nieve', 'Unidad', 'S/ 19.00', 'Moldes 2D', '❄️', 'Copo de Nieve'],
+  ['Molde 2D Figuras x4', '80 g', 'S/ 23.00 (Agotado)', 'Moldes 2D', '🟢', 'Figuras x4'],
+  ['Molde 2D Marino Variado', 'Unidad', 'S/ 20.00', 'Moldes 2D', '🌊', 'Marino Variado'],
+  ['Molde 2D Rectangulares Pequeños', '15 g', 'S/ 19.00', 'Moldes 2D', '🧼', 'Rectangulares Peq'],
+  ['Molde 2D Masajeador Ovalado', '120 g', 'S/ 22.00', 'Moldes 2D', '💆', 'Masajeador Ovalado'],
+  ['Molde 2D Masajeador Redondo', '80 g', 'S/ 20.00', 'Moldes 2D', '💆', 'Masajeador Redondo'],
+  ['Molde 2D Masajeador Rectangular', '100 g', 'S/ 20.00', 'Moldes 2D', '💆', 'Masajeador Rectangular'],
+  ['Molde 2D Rosas x6', '80 g', 'S/ 19.00', 'Moldes 2D', '🌹', 'Rosas 6'],
+  ['Molde 2D Marino Variado (80g)', '80 g', 'S/ 19.00', 'Moldes 2D', '🌊', 'Marino 80g'],
+  ['Molde 2D Flores Redondas', '90 g', 'S/ 19.50', 'Moldes 2D', '🌸', 'Flores Redondas'],
+  ['Molde 2D Flores x6', 'Unidad', 'S/ 19.00', 'Moldes 2D', '🌸', 'Flores x6'],
+  ['Molde 2D Flores Variadas', '80 g', 'S/ 19.00', 'Moldes 2D', '🌸', 'Flores Variadas'],
+  ['Molde 2D Flores k6', 'Unidad', 'S/ 19.00 (Agotado)', 'Moldes 2D', '🌸', 'Flores k6'],
+  ['Molde 2D Rosas x6 (Sin peso)', 'Unidad', 'S/ 19.00', 'Moldes 2D', '🌹', 'Rosas x6'],
+  ['Molde 2D Rosa y Tulipán x6', '80 g', 'S/ 19.00', 'Moldes 2D', '🌷', 'Rosa y Tulipán'],
+  ['Molde 2D Molde Hojas', 'Unidad', 'S/ 22.00', 'Moldes 2D', '🍃', 'Molde Hojas'],
+  ['Molde 2D Corazones Rosado', 'Unidad', 'S/ 19.00', 'Moldes 2D', '❤️', 'Corazones Rosado'],
+  ['Molde 2D Emojis Boquita', 'Unidad', 'S/ 18.00', 'Moldes 2D', '💋', 'Emojis Boquita'],
+  ['Molde 2D Corazones Ones x6', 'Unidad', 'S/ 19.00', 'Moldes 2D', '❤️', 'Corazones Ones'],
+  ['Molde 2D Corazones 2', 'Unidad', 'S/ 19.00', 'Moldes 2D', '❤️', 'Corazones 2'],
+  ['Molde 2D Corazones con Lazo', 'Unidad', 'S/ 18.00', 'Moldes 2D', '💝', 'Corazones Lazo'],
+  ['Molde 2D Corazones x6', 'Unidad', 'S/ 20.00', 'Moldes 2D', '❤️', 'Corazones x6'],
+  ['Molde 2D Corazones 3', 'Unidad', 'S/ 19.00 (Agotado)', 'Moldes 2D', '❤️', 'Corazones 3'],
+  ['Molde 2D Corazón Diamante', 'Unidad', 'S/ 20.00', 'Moldes 2D', '💎', 'Corazón Diamante'],
+  ['Molde 2D Piñas Pequeñas', 'Unidad', 'S/ 14.00', 'Moldes 2D', '🍍', 'Piñas Pequeñas'],
+  ['Molde 2D Tulipanes', '60 g', 'S/ 20.00', 'Moldes 2D', '🌷', 'Tulipanes'],
+  ['Molde 2D Manzana', '65 g', 'S/ 19.00', 'Moldes 2D', '🍎', 'Manzana'],
+  ['Molde 2D Concha x4', 'Unidad', 'S/ 15.00', 'Moldes 2D', '🐚', 'Concha x4'],
+  ['Molde 2D Letras y Números', '10 g', 'S/ 19.50', 'Moldes 2D', '🔠', 'Letras y Números'],
+  ['Molde 2D Baby Shower', '80 g', 'S/ 19.00', 'Moldes 2D', '🍼', 'Baby Shower'],
+  ['Molde 2D Cruces', 'Unidad', 'S/ 19.00', 'Moldes 2D', '✝️', 'Cruces'],
+  ['Molde 2D Trofeos', '25 g', 'S/ 19.00', 'Moldes 2D', '🏆', 'Trofeos'],
+  ['Molde 2D Donas x6', 'Unidad', 'S/ 17.00', 'Moldes 2D', '🍩', 'Donas x6'],
+  ['Molde 2D Frutas Pequeñas', 'Unidad', 'S/ 14.00', 'Moldes 2D', '🍒', 'Frutas Pequeñas'],
+  ['Molde 2D Corazón Diamante (15 soles)', 'Unidad', 'S/ 15.00', 'Moldes 2D', '💎', 'Corazón Diamante 15'],
+  ['Molde 2D Huellitas', 'Unidad', 'S/ 19.00', 'Moldes 2D', '🐾', 'Huellitas'],
+  ['Molde 2D Hello Kitty', 'Unidad', 'S/ 20.00', 'Moldes 2D', '🐱', 'Hello Kitty'],
+  ['Molde 2D Molde Osito x6', 'Unidad', 'S/ 20.00', 'Moldes 2D', '🧸', 'Osito x6'],
+  ['Molde 2D Safari', '85 g', 'S/ 19.00', 'Moldes 2D', '🦁', 'Safari'],
+  ['Molde 2D Capibara', 'Unidad', 'S/ 20.00', 'Moldes 2D', '🦦', 'Capibara'],
+  ['Molde 2D Insectos', '85 g', 'S/ 20.00', 'Moldes 2D', '🐞', 'Insectos'],
+  ['Molde 2D Miembro', '35 g', 'S/ 18.00', 'Moldes 2D', '🍆', 'Miembro'],
+  ['Molde 2D Dinosaurios', 'Unidad', 'S/ 21.00', 'Moldes 2D', '🦖', 'Dinosaurios'],
+  ['Molde 2D Dinosaurios (22 soles)', 'Unidad', 'S/ 22.00 (Agotado)', 'Moldes 2D', '🦖', 'Dinosaurios 22'],
+  ['Molde 2D Abejas Variadas', 'Unidad', 'S/ 22.00', 'Moldes 2D', '🐝', 'Abejas Variadas'],
+  ['Molde 2D Halloween', 'Unidad', 'S/ 20.00', 'Moldes 2D', '🎃', 'Halloween'],
+  ['Molde 2D Calabazas', '15 g', 'S/ 20.00', 'Moldes 2D', '🎃', 'Calabazas'],
+  ['Molde 2D Fantasmas', '15 g', 'S/ 20.00', 'Moldes 2D', '👻', 'Fantasmas'],
+  ['Molde 2D Calaberas', 'Unidad', 'S/ 18.00', 'Moldes 2D', '💀', 'Calaberas'],
+  ['Molde 2D Árbol de Navidad', 'Unidad', 'S/ 19.50 (Agotado)', 'Moldes 2D', '🎄', 'Árbol de Navidad'],
+  ['Molde 2D Papanuel', 'Unidad', 'S/ 19.50', 'Moldes 2D', '🎅', 'Papanuel'],
+  ['Molde 2D Molde Navideño', 'Unidad', 'S/ 19.50', 'Moldes 2D', '🎄', 'Navideño'],
+  ['Molde 2D Maceta Oxagonal', '60 g', 'S/ 19.50', 'Macetas', '🪴', 'Maceta Oxagonal'],
+  ['Molde 2D Maceta Cuadrado', '60 g', 'S/ 19.50', 'Macetas', '🪴', 'Maceta Cuadrado'],
+  ['Molde 2D Maceta Corazón', '60 g', 'S/ 19.50', 'Macetas', '🪴', 'Maceta Corazón'],
+  ['Molde 2D Círculo x 6', 'Unidad', 'S/ 19.50', 'Macetas', '🪴', 'Círculo x 6'],
+  ['Molde 2D Maceta Círculo', '60 g', 'S/ 19.50', 'Macetas', '🪴', 'Maceta Círculo'],
+  ['Molde 2D Flor de Loto', 'Unidad', 'S/ 38.00', 'Moldes 2D', '🪷', 'Flor de Loto'],
+  ['Molde 2D Mano de Buda', '80 g', 'S/ 19.50', 'Moldes 2D', '🪬', 'Mano de Buda'],
+  ['Molde 2D Mascotas', 'Unidad', 'S/ 19.50', 'Moldes 2D', '🐶', 'Mascotas'],
+  ['Molde 2D Molde Figuras (Aromatizador)', 'Unidad', 'S/ 23.00', 'Moldes 2D', '🌬️', 'Molde Figuras'],
+  ['Moldes para Chocolates', 'Unidad / 3 unid.', 'S/ 14.00 / S/ 10.00 c/u', 'Moldes para Chocolates', '🍫', 'Chocolates'],
+  ['Moldes para Gomita', 'Unidad / 3 unid.', 'S/ 14.00 / S/ 10.00 c/u', 'Moldes para Gomita', '🍬', 'Gomitas'],
+
+  // NUEVOS PRODUCTOS DEL PDF WHATSAPP — 13/08/2026
+  ['Cera de soja', 'Alta fusión · 1 kg', 'S/ 42.00', 'Ceras para velas', '🕯️', 'Soja alta fusión', './assets/nuevos/pdf-page-1.jpg'],
+  ['Cera de soja', 'Alta fusión · 500 g', 'S/ 22.00', 'Ceras para velas', '🕯️', 'Soja alta fusión', './assets/nuevos/pdf-page-1.jpg'],
+  ['Cera de soja', 'Baja fusión · 1 kg', 'S/ 40.00', 'Ceras para velas', '🕯️', 'Soja baja fusión', './assets/nuevos/pdf-page-2.jpg'],
+  ['Cera de soja', 'Baja fusión · 500 g', 'S/ 20.00', 'Ceras para velas', '🕯️', 'Soja baja fusión', './assets/nuevos/pdf-page-2.jpg'],
+
+  ['Fragancia 250 ml · Coco', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Coco 250 ml', './assets/nuevos/pdf-page-3.jpg'],
+  ['Fragancia 250 ml · Jazmín', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Jazmín 250 ml', './assets/nuevos/pdf-page-3.jpg'],
+  ['Fragancia 250 ml · Vainilla', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Vainilla 250 ml', './assets/nuevos/pdf-page-3.jpg'],
+  ['Fragancia 250 ml · Rosas', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Rosas 250 ml', './assets/nuevos/pdf-page-3.jpg'],
+  ['Fragancia 250 ml · Lavanda', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Lavanda 250 ml', './assets/nuevos/pdf-page-3.jpg'],
+  ['Fragancia 250 ml · Eucalipto', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Eucalipto 250 ml', './assets/nuevos/pdf-page-4.jpg'],
+  ['Fragancia 250 ml · Miel', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Miel 250 ml', './assets/nuevos/pdf-page-4.jpg'],
+  ['Fragancia 250 ml · Naranja', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Naranja 250 ml', './assets/nuevos/pdf-page-4.jpg'],
+  ['Fragancia 250 ml · Maracuyá', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Maracuyá 250 ml', './assets/nuevos/pdf-page-4.jpg'],
+  ['Fragancia 250 ml · Uva', '250 ml · Mayor desde 3 unidades', 'S/ 48.00 · Mayor S/ 41.00', 'Fragancias 250 ml', '🌸', 'Uva 250 ml', './assets/nuevos/pdf-page-4.jpg'],
+
+  ['Envase para vela · 250 ml', 'Vidrio ámbar · tapa negra · Mayor desde 6', 'S/ 7.50 c/u', 'Envases para velas', '🫙', 'Envase 250 ml ámbar', './assets/nuevos/pdf-page-5.jpg'],
+  ['Envase para vela · 220 ml', 'Colores surtidos · tapa dorada · Mayor desde 6', 'S/ 9.50 c/u', 'Envases para velas', '🫙', 'Envase 220 ml color', './assets/nuevos/pdf-page-6.jpg'],
+  ['Envase para vela · 185 ml', 'Vidrio · tapa dorada · Mayor desde 6', 'S/ 10.00 c/u', 'Envases para velas', '🫙', 'Envase 185 ml', './assets/nuevos/pdf-page-7.jpg'],
+  ['Envase para vela · 220 ml', 'Vidrio surtido · tapa de madera · Mayor desde 6', 'S/ 9.50 c/u', 'Envases para velas', '🫙', 'Envase 220 ml madera', './assets/nuevos/pdf-page-8.jpg'],
+  ['Envase para vela · 150 ml', 'Vidrio ámbar · tapa gris · Mayor desde 6', 'S/ 7.50 c/u', 'Envases para velas', '🫙', 'Envase 150 ml', './assets/nuevos/pdf-page-9.jpg'],
+  ['Envase para vela · 315 ml', 'Vidrio transparente · tapa dorada · Mayor desde 6', 'S/ 10.00 c/u', 'Envases para velas', '🫙', 'Envase 315 ml dorado', './assets/nuevos/pdf-page-10.jpg'],
+  ['Envase para vela · 350 ml', 'Vidrio · tapa bambú · Mayor desde 6', 'S/ 11.00 c/u', 'Envases para velas', '🫙', 'Envase 350 ml bambú', './assets/nuevos/pdf-page-11.jpg'],
+  ['Envase para vela · 210 ml', 'Vidrio con tapa · Mayor desde 6', 'S/ 12.00 c/u', 'Envases para velas', '🫙', 'Envase 210 ml', './assets/nuevos/pdf-page-12.jpg'],
+  ['Envase para vela · 250 ml', 'Vidrio decorativo con tapa · Mayor desde 6', 'S/ 10.00 c/u', 'Envases para velas', '🫙', 'Envase 250 ml decorativo', './assets/nuevos/pdf-page-13.jpg'],
+  ['Envase para vela · 80 ml', 'Vidrio cuadrado · Mayor desde 6', 'S/ 6.50 c/u', 'Envases para velas', '🫙', 'Envase 80 ml', './assets/nuevos/pdf-page-14.jpg'],
+  ['Envase para vela · 100 ml', 'Vidrio ámbar · tapa dorada · Mayor desde 6', 'S/ 6.50 c/u', 'Envases para velas', '🫙', 'Envase 100 ml dorado', './assets/nuevos/pdf-page-15.jpg'],
+  ['Envase para vela · 100 ml', 'Vidrio transparente · tapa corcho · Mayor desde 6', 'S/ 6.50 c/u', 'Envases para velas', '🫙', 'Envase 100 ml corcho', './assets/nuevos/pdf-page-16.jpg'],
+  ['Envase para vela · 60 ml', 'Vidrio · Mayor desde 6', 'S/ 6.50 c/u', 'Envases para velas', '🫙', 'Envase 60 ml', './assets/nuevos/pdf-page-17.jpg'],
+  ['Envase para vela · 100 ml', 'Vidrio transparente · tapa dorada · Mayor desde 6', 'S/ 5.90 c/u', 'Envases para velas', '🫙', 'Envase 100 ml dorado económico', './assets/nuevos/pdf-page-18.jpg'],
+  ['Envase para vela · 200 ml', 'Vidrio transparente · tapa dorada · Mayor desde 6', 'S/ 7.00 c/u', 'Envases para velas', '🫙', 'Envase 200 ml', './assets/nuevos/pdf-page-19.jpg'],
+  ['Envase para vela · 400 ml', 'Vidrio transparente · tapa dorada · Mayor desde 6', 'S/ 11.00 c/u', 'Envases para velas', '🫙', 'Envase 400 ml', './assets/nuevos/pdf-page-20.jpg'],
+  ['Envase para vela · 315 ml', 'Colores surtidos · tapa bambú · Mayor desde 6', 'S/ 10.00 c/u', 'Envases para velas', '🫙', 'Envase 315 ml color', './assets/nuevos/pdf-page-21.jpg']
+];
+
+
+async function loadSiteAppearance(){
+  try{
+    let data=null;
+    if(window.supabaseClient){
+      const res=await window.supabaseClient.from('site_settings').select('*').eq('id',1).maybeSingle();
+      if(!res.error) data=res.data;
+    }
+    if(data){
+      const logo=data.logo_url;
+      if(logo)document.querySelectorAll('img[src*="assets/logo.png"]').forEach(img=>{img.src=logo;});
+      if(data.background_url){document.body.style.backgroundImage=`linear-gradient(rgba(232,246,251,.78),rgba(220,239,247,.86)), url("${data.background_url}")`;document.body.style.backgroundPosition='center top';document.body.style.backgroundSize='cover';document.body.style.backgroundAttachment=window.matchMedia('(max-width:650px)').matches?'scroll':'fixed';document.body.style.backgroundRepeat='no-repeat';}
+      if(data.hero_slides) homepageConfig.hero_slides=Array.isArray(data.hero_slides)?data.hero_slides:homepageConfig.hero_slides;
+      if(typeof data.announcement_enabled==='boolean') homepageConfig.announcement_enabled=data.announcement_enabled;
+      if(data.announcement_title) homepageConfig.announcement_title=data.announcement_title;
+      if(data.announcement_subtitle) homepageConfig.announcement_subtitle=data.announcement_subtitle;
+      if(Array.isArray(data.announcement_payments)) homepageConfig.announcement_payments=data.announcement_payments;
+      if(Array.isArray(data.announcement_shipping)) homepageConfig.announcement_shipping=data.announcement_shipping;
+      if(Array.isArray(data.category_settings)) setCategorySettingsFromData(data.category_settings);
+    }
+  }catch(e){console.warn('No se pudo cargar la configuración de la tienda. Se usan valores locales.',e);}
+  renderAnnouncement();applyHeroConfig();try{renderCats();renderCategoryCircles();}catch(e){}
+  if(homepageConfig.announcement_enabled!==false && sessionStorage.getItem('oceanAnnouncementClosed')!=='1') setTimeout(showAnnouncement,500);
+}
+
+async function loadCloudProducts(){
+  if(!window.supabaseClient) return;
+  try{
+    const {data,error}=await window.supabaseClient.from('products').select('*').order('sort_order',{ascending:true});
+    if(error) throw error;
+    if(Array.isArray(data) && data.length){
+      products=data.map((p)=>{
+        const row=[
+          p.name || '', p.presentation || '', p.price_label || ('S/ '+Number(p.price||0).toFixed(2)),
+          p.category || 'Otros', p.emoji || '🛍️', p.keyword || p.name || '', p.image_url || '', p.id, p.available !== false, !!p.featured, !!p.is_offer, Number(p.old_price || 0), Number(p.view_count || 0), Number(p.cart_count || 0), Number(p.sales_count || 0)
+        ];
+        row.__sort_order=Number(p.sort_order)||0;
+        return row;
+      });
+      cats = ['Todos', ...new Set(products.map(p => p[3]))];
+    }
+  }catch(e){ console.warn('No se pudo cargar el catálogo de Supabase. Se usa el catálogo local.', e); }
+  try{ render(); }catch(e){}
+}
+
+let cats = [];
+let categorySettings = [];
+
+function normalizeCategory(v){ return String(v||'').trim().replace(/\s+/g,' '); }
+function categoryKey(v){ return normalizeCategory(v).toLocaleLowerCase('es'); }
+function buildCategories(){
+  const seen=new Map();
+  products.forEach(p=>{const c=normalizeCategory(p[3]||'Otros'); const k=categoryKey(c); if(!seen.has(k)) seen.set(k,c);});
+  const productCats=Array.from(seen.values());
+  const settings=(Array.isArray(categorySettings)?categorySettings:[]).filter(c=>c&&c.visible!==false&&normalizeCategory(c.name));
+  const ordered=[],used=new Set();
+  settings.sort((a,b)=>(Number(a.sort_order)||0)-(Number(b.sort_order)||0)).forEach(c=>{const name=normalizeCategory(c.name),k=categoryKey(name);if(k!=='todos'&&!used.has(k)&&productCats.some(x=>categoryKey(x)===k)){ordered.push(name);used.add(k);}});
+  productCats.forEach(c=>{const k=categoryKey(c);if(!used.has(k)){ordered.push(c);used.add(k);}});
+  return ['Todos',...ordered];
+}
+function categorySettingFor(name){return (categorySettings||[]).find(c=>categoryKey(c.name)===categoryKey(name));}
+function categoryOrderRank(name){
+  const key=categoryKey(name);
+  const found=(categorySettings||[]).find(c=>categoryKey(c.name)===key);
+  if(found) return Number.isFinite(Number(found.sort_order)) ? Number(found.sort_order) : 999999;
+  // Las categorías nuevas que todavía no tienen configuración quedan al final.
+  return 999999;
+}
+function sortProductsByCategoryOrder(list){
+  return [...list].sort((a,b)=>{
+    const ca=categoryOrderRank(a[3]), cb=categoryOrderRank(b[3]);
+    if(ca!==cb) return ca-cb;
+    return (Number(a.__sort_order)||0)-(Number(b.__sort_order)||0);
+  });
+}
+function setCategorySettingsFromData(data){categorySettings=Array.isArray(data)?data.map((c,i)=>({...c,name:normalizeCategory(c.name),sort_order:Number(c.sort_order)||i,visible:c.visible!==false})).filter(c=>c.name&&categoryKey(c.name)!=='todos'):[];}
+function persistFavorites(){ localStorage.setItem('jaboneriaOceanFavorites', JSON.stringify(Array.from(favorites))); }
+function toggleFavorite(id){
+  if(favorites.has(id)) favorites.delete(id); else favorites.add(id);
+  persistFavorites(); render();
+}
+function toggleCategories(){
+  categoriesOpen=!categoriesOpen;
+  const panel=document.getElementById('categoryPanel');
+  if(panel) panel.classList.toggle('open',categoriesOpen);
+  const arrow=document.getElementById('catArrow'); if(arrow) arrow.textContent=categoriesOpen?'▲':'▼';
+}
+function closeCategoriesOnMobile(){
+  if(window.matchMedia('(max-width:650px)').matches && categoriesOpen) toggleCategories();
+}
+function priceNumber(p) { const m=String(p[2]).match(/S\/\s*([0-9]+(?:\.[0-9]+)?)/); return m ? Number(m[1]) : 0; }
+function productImage(p) { if (p[6]) return p[6]; const n=products.indexOf(p)+1; return n>=1&&n<=353?`./assets/productos/${n}.jpg`:'./assets/logo.png'; }
+function waLinks(text) { const safeText=String(text).replace(/\uFFFD/g,String.fromCodePoint(0x1F4CC)); const encoded=encodeURIComponent(safeText); return WHATSAPP_NUMBERS.map((n,i)=>`<a href="https://api.whatsapp.com/send?phone=${n}&text=${encoded}" target="_blank" rel="noopener">WhatsApp ${WHATSAPP_NUMBERS.length>1?i+1:''} · ${n}</a>`).join(''); }
+function openWhats(text='Hola, Jaboneria Ocean. Quiero realizar una consulta/pedido.'){
+  logEvent('whatsapp_click',null,null);
+  const box=document.getElementById('waChoice');
+  if(!WHATSAPP_NUMBERS.length) box.innerHTML='<div style="padding:14px;background:#fff8e8;border:1px solid #f6dfaa;border-radius:13px;color:#72530d"><b>Falta configurar el WhatsApp.</b></div>'; else box.innerHTML=waLinks(text);
+  document.getElementById('modal').classList.add('show');
+}
+function closeWhats(){document.getElementById('modal').classList.remove('show');}
+function addToCart(index){ const i=cart.findIndex(x=>x.index===index); if(i>=0) cart[i].qty++; else cart.push({index,qty:1}); const p=products[index]; if(p&&p[7]) logEvent('add_to_cart',p[7]); updateCart(); }
+function changeQty(index,delta){const i=cart.findIndex(x=>x.index===index);if(i<0)return;cart[i].qty+=delta;if(cart[i].qty<=0)cart.splice(i,1);updateCart();}
+function removeCart(index){cart=cart.filter(x=>x.index!==index);updateCart();}
+function cartTotal(){return cart.reduce((sum,x)=>sum+priceNumber(products[x.index])*x.qty,0);}
+function cartCount(){return cart.reduce((sum,x)=>sum+x.qty,0);}
+function toggleCart(){document.getElementById('cartPanel').classList.toggle('show');renderCart();}
+function renderCart(){const box=document.getElementById('cartItems');if(!box)return;if(!cart.length){box.innerHTML='<div class="cartEmpty">Tu carrito está vacío.<br>Agrega los productos que quieras cotizar.</div>';}else{box.innerHTML=cart.map(x=>{const p=products[x.index];return `<div class="cartItem"><img src="${productImage(p)}" alt="${p[0]}" onerror="this.onerror=null;this.src='./assets/logo.png'"><div><strong>${p[0]}</strong><small>${p[1]} · ${p[2]}</small><div class="qty"><button onclick="changeQty(${x.index},-1)">−</button><b>${x.qty}</b><button onclick="changeQty(${x.index},1)">+</button><button class="remove" onclick="removeCart(${x.index})">Eliminar</button></div></div><strong>S/ ${(priceNumber(p)*x.qty).toFixed(2)}</strong></div>`;}).join('');}document.getElementById('cartTotal').textContent=`S/ ${cartTotal().toFixed(2)}`;}
+function updateCart(){const n=cartCount();document.getElementById('cartCount').textContent=n;const f=document.getElementById('floatingCartCount');if(f)f.textContent=n;renderCart();}
+function sendCartWhatsApp(){if(!cart.length){alert('Agrega al menos un producto al carrito.');return;}const pin=String.fromCodePoint(0x1F4CC);const lines=cart.map(x=>{const p=products[x.index];return `${pin} ${p[0]} — ${p[1]} — ${x.qty} unid. — S/ ${(priceNumber(p)*x.qty).toFixed(2)}`;}).join('\n');const text=`Hola, Jaboneria Ocean. Quiero solicitar esta cotización:\n\n${lines}\n\nTOTAL ESTIMADO: S/ ${cartTotal().toFixed(2)}\n\n¿Me confirman disponibilidad y costo de envío, por favor?`;openWhats(text);}
+function renderCats(){
+  cats=buildCategories();
+  const sel=document.getElementById('categorySelect');
+  if(sel){
+    const previous=active;
+    sel.innerHTML=cats.map(c=>`<option value="${escHtml(c)}">${escHtml(c)}</option>`).join('');
+    active=cats.some(c=>categoryKey(c)===categoryKey(previous))?previous:'Todos';
+    sel.value=active;
+  }
+}
+function escHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+function handleSearch(){
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  if(q.length>=3 && !window._lastSearchEvent){ window._lastSearchEvent=q; logEvent('search',null,q); setTimeout(()=>window._lastSearchEvent=null,1500); }
+  render();
+}
+function openImageLightbox(src,caption=''){const m=document.getElementById('imageLightbox'),img=document.getElementById('lightboxImage'),cap=document.getElementById('lightboxCaption');if(!m||!img)return;img.src=src||'./assets/logo.png';img.alt=caption||'Imagen del producto';if(cap)cap.textContent=caption||'';m.classList.add('show');document.body.style.overflow='hidden';}
+function closeImageLightbox(){const m=document.getElementById('imageLightbox');if(m)m.classList.remove('show');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeImageLightbox();});
+function renderMiniCard(p){
+  const idx=products.indexOf(p); const fav=favorites.has(p[7]); const offer=p[10]; const old=p[11];
+  return `<div class="miniProduct"><span class="miniBadge">${offer?'OFERTA':'DESTACADO'}</span><img src="${productImage(p)}" alt="${p[0]}" loading="lazy" onclick="openImageLightbox(this.src,${JSON.stringify(p[0])})" onerror="this.onerror=null;this.src='./assets/logo.png'"><h3>${p[0]}</h3><p>${p[1]}</p><div><span class="miniPrice">${p[2]}</span>${offer&&old?`<span class="oldPrice">S/ ${old.toFixed(2)}</span>`:''}</div><div class="miniActions"><button onclick="addToCart(${idx})">🛒 Agregar</button><button class="secondary" onclick="toggleFavorite('${p[7]}')">${fav?'♥':'♡'} Favorito</button></div></div>`;
+}
+function renderHighlights(){
+  const offers=products.filter(p=>p[10] && p[8]!==false).slice(0,8);
+  const featured=products.filter(p=>p[9] && p[8]!==false).slice(0,8);
+  const og=document.getElementById('offersGrid'),fg=document.getElementById('featuredGrid');
+  if(og) og.innerHTML=offers.length?offers.map(renderMiniCard).join(''):'<div class="loadingState">Pronto podrás seleccionar ofertas desde el panel Admin.</div>';
+  if(fg) fg.innerHTML=featured.length?featured.map(renderMiniCard).join(''):'<div class="loadingState">Pronto podrás seleccionar productos destacados desde el panel Admin.</div>';
+}
+function renderKits(){
+  const box=document.getElementById('kitsGrid'); if(!box)return;
+  const visible=kits.filter(k=>k.available!==false).sort((a,b)=>(Number(a.sort_order)||0)-(Number(b.sort_order)||0));
+  if(!visible.length){box.innerHTML='<div class="loadingState">Pronto podrás crear tus propios kits desde el panel Admin.</div>';return;}
+  box.innerHTML=visible.map(k=>{
+    const comps=Array.isArray(k.components)?k.components.map(c=>`${c.qty||1}× ${c.name||'Producto'}`).join(' · '):'';
+    const price=k.price_label||((Number(k.price)||0)>0?`S/ ${Number(k.price).toFixed(2)}`:'Consultar');
+    const old=k.old_price?`<span class="kitOldPrice">S/ ${Number(k.old_price).toFixed(2)}</span>`:'';
+    const img=k.image_url?`<img class="kitImage" src="${escHtml(k.image_url)}" alt="${escHtml(k.name||'Kit')}" onclick="openImageLightbox(this.src,${JSON.stringify(k.name||'Kit')})" onerror="this.onerror=null;this.src='./assets/logo.png'">`:'';
+    const msg=`Hola, Jaboneria Ocean. Quiero información sobre el kit: ${k.name||'Kit'}.`;
+    return `<div class="comboCard">${img}<div class="ico">${escHtml(k.emoji||'🎁')}</div><h3>${escHtml(k.name||'Kit')}</h3><p>${escHtml(k.description||'')}</p>${comps?`<div class="kitComponents"><b>Incluye:</b> ${escHtml(comps)}</div>`:''}<div class="kitPrice">${escHtml(price)}${old}</div><button class="btn whats" onclick='openWhats(${JSON.stringify(msg)})'>💬 Consultar kit</button></div>`;
+  }).join('');
+}
+async function loadKits(){
+  const fallback=[
+    {id:'local-jabones',name:'Kit para empezar en jabones',description:'Base + esencia + colorante + molde. Podemos ayudarte a elegir las opciones disponibles.',emoji:'🧼',price:0,price_label:'Consultar',sort_order:1,available:true,components:[]},
+    {id:'local-velas',name:'Kit para empezar en velas',description:'Cera o parafina + esencia + envase. Te orientamos según el tipo de vela que quieras hacer.',emoji:'🕯️',price:0,price_label:'Consultar',sort_order:2,available:true,components:[]},
+    {id:'local-emprender',name:'Kit para crear y emprender',description:'Moldes, esencias y complementos para comenzar tus primeros productos.',emoji:'🎨',price:0,price_label:'Consultar',sort_order:3,available:true,components:[]}
+  ];
+  kits=fallback; renderKits();
+  if(!window.supabaseClient)return;
+  try{const {data,error}=await window.supabaseClient.from('kits').select('*').order('sort_order',{ascending:true});if(error)throw error;if(Array.isArray(data)&&data.length){kits=data;renderKits();}}catch(e){console.warn('No se pudieron cargar los kits. Se muestran los kits de ejemplo.',e);}
+}
+function render(){
+  renderCats();
+  renderCategoryCircles();
+  const q=document.getElementById('search').value.toLowerCase().trim();
+  let arr=products.filter(p=>(active==='Todos'||categoryKey(p[3])===categoryKey(active))&&(!q||p.join(' ').toLowerCase().includes(q)));
+  // En "Todos", primero se respeta el orden de categorías configurado en Admin
+  // y dentro de cada categoría se conserva el orden individual de los productos.
+  arr=sortProductsByCategoryOrder(arr);
+  document.getElementById('count').textContent=`${arr.length} productos`;
+  document.getElementById('grid').innerHTML=arr.length?arr.map(p=>{
+    const idx=products.indexOf(p), fav=favorites.has(p[7]), offer=p[10], old=p[11];
+    const price=offer&&old?`<div class="offerPrice"><span class="current">${p[2]}</span><span class="oldPrice">S/ ${old.toFixed(2)}</span></div>`:p[2];
+    return `<article class="product ${p[8]===false?'soldout':''}" onclick="p[7]&&logEvent('product_view',p[7])"><button class="favoriteBtn" onclick="event.stopPropagation();toggleFavorite('${p[7]}')">${fav?'♥':'♡'}</button>${offer?'<span class="offerBadge">🔥 OFERTA</span>':''}${p[9]?'<span class="featuredBadge">⭐ DESTACADO</span>':''}<img class="productIcon" src="${productImage(p)}" alt="${p[0]}" loading="lazy" decoding="async" onclick="event.stopPropagation();openImageLightbox(this.src,${JSON.stringify(p[0])})" onerror="this.onerror=null;this.src='./assets/logo.png'"><span class="tag">${p[3]}</span><h3>${p[0]}</h3><div class="meta">${p[1]}</div><div class="price"><strong>${price}</strong>${p[8]===false?'<span class="soldLabel">AGOTADO</span>':`<button class="addCart" onclick="event.stopPropagation();addToCart(${idx})">🛒 Agregar</button>`}</div></article>`;
+  }).join(''):'<div class="empty">No encontramos productos con esa búsqueda.</div>';
+  renderHighlights(); updateCart();
+}
+async function logEvent(type,productId=null,query=null){
+  try{if(window.supabaseClient&&window.supabaseClient.rpc) await window.supabaseClient.rpc('log_store_event',{p_event_type:type,p_product_id:productId,p_query:query});}catch(e){console.debug('event',e.message);}
+}
+// Bloque de seguridad de ejecución
+try {
+  document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeWhats(); });
+  render();
+  startHeroExperience();
+  renderKits();
+  if(window.supabaseClient && window.supabaseClient.rpc) logEvent('page_view');
+} catch (error) {
+  const grid=document.getElementById('grid');
+  if(grid) grid.innerHTML = '<div class="empty" style="color:#c14b69;font-weight:bold;">No se pudo mostrar el catálogo. Recarga la página.</div>';
+}
+</script>
+<script>
+loadSiteAppearance();
+Promise.all([loadCloudProducts(), loadKits()]).then(()=>{catalogReady=true;render();renderKits();}).catch(()=>{render();renderKits();});
+</script>
+
+<script>
+(function(){
+  const saved=localStorage.getItem('oceanTheme');
+  if(saved==='dark') document.body.classList.add('dark');
+  function sync(){
+    const dark=document.body.classList.contains('dark');
+    const icon=document.getElementById('themeIcon');
+    const btn=document.getElementById('themeToggle');
+    if(icon) icon.textContent=dark?'☀️':'🌙';
+    if(btn) btn.title=dark?'Cambiar a modo claro':'Cambiar a modo oscuro';
+  }
+  window.toggleTheme=function(){
+    document.body.classList.toggle('dark');
+    localStorage.setItem('oceanTheme',document.body.classList.contains('dark')?'dark':'light');
+    sync();
+  };
+  sync();
+})();
+</script>
+</body>
+</html>

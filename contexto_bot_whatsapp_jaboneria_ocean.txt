@@ -1,0 +1,171 @@
+JABONERIA OCEAN — CONTEXTO DEL PROYECTO Y PLAN DEL BOT DE WHATSAPP
+
+OBJETIVO GENERAL
+Crear un ecosistema de ventas para Jaboneria Ocean donde la pagina web, carrito, WhatsApp Business, pagos y administracion trabajen juntos. La idea es que el cliente pueda descubrir productos en la pagina, armar su carrito, pasar a WhatsApp, recibir respuestas automaticas correctas, recibir datos/QR de pago, enviar comprobante y continuar con seguimiento post-compra. El administrador tambien debe poder consultar y gestionar parte del negocio desde WhatsApp.
+
+ESTADO ACTUAL DE LA PAGINA
+- Tienda/catalogo web con productos y categorias.
+- Carrito de compra/cotizacion.
+- Panel de administracion conectado a Supabase.
+- Productos con nombre, categoria, presentacion, precio, precio mostrado, emoji, disponibilidad, destacado y oferta/precio anterior.
+- Imagenes de productos almacenadas/servidas mediante Supabase y/o assets del proyecto.
+- Kits con sus propios datos, imagenes y componentes.
+- Botones para editar y clonar productos.
+- Orden manual de productos mediante botones subir/bajar.
+- El problema que se corrigio en esta version era que el ordenamiento usaba upsert y podia terminar enviando name=null. Ahora el movimiento usa UPDATE solamente sobre sort_order y usa un valor temporal para intercambiar posiciones sin tocar los demas campos.
+
+IDEA DEL BOT DE WHATSAPP
+El bot no debe reemplazar la pagina: debe complementarla. La pagina sirve para descubrir productos y armar el carrito; WhatsApp sirve para resolver dudas, confirmar pedidos, pagos y postventa.
+
+1. ENTRADA DEL CLIENTE
+- Cliente escribe por WhatsApp.
+- Bot saluda y detecta intencion.
+- Menu sugerido: Ver catalogo, Buscar producto, Hacer pedido, Consultar pago, Consultar envio, Estado de mi pedido, Hablar con una persona.
+- Si el cliente viene desde un enlace de producto/carrito, conservar ese contexto cuando sea posible.
+
+2. RESPUESTAS AUTOMATICAS INTELIGENTES
+El bot debe consultar datos reales de Supabase antes de responder precios, disponibilidad o datos de productos. No debe inventar precios ni stock.
+Ejemplos:
+- “¿Cuanto cuesta la parafina?” -> buscar productos relacionados y devolver nombre, presentacion y precio.
+- “¿Tienen arcilla blanca?” -> confirmar disponibilidad y ofrecer link del producto.
+- “Quiero 2 de esos” -> usar el contexto de la conversacion para identificar el producto.
+- “¿Que fragancias tienen?” -> listar categoria/productos relevantes.
+
+3. ENVIAR EL CATALOGO DESDE WHATSAPP
+- Respuestas cortas con productos relevantes.
+- Link directo a la pagina/producto.
+- Boton/enlace para abrir el carrito o continuar comprando.
+- No mandar listas enormes si una busqueda puede resolverlo.
+
+4. PEDIDOS
+Flujo ideal:
+Cliente -> pagina -> carrito -> WhatsApp -> confirmacion del pedido.
+El mensaje generado por la pagina debe incluir: productos, cantidades, precios, subtotal/total y datos basicos del cliente si se solicitan.
+El bot puede convertir esa conversacion en una orden dentro de Supabase.
+
+5. PAGOS
+La idea es que WhatsApp pueda enviar automaticamente los datos de pago y el/los QR autorizados por el negocio.
+- Mostrar metodo de pago elegido.
+- Enviar QR correspondiente.
+- Enviar instrucciones claras: monto, referencia y que debe enviar el cliente.
+- Cliente envia comprobante.
+- Bot registra el comprobante como pendiente de verificacion.
+- No marcar como pagado automaticamente solo porque exista una imagen: la confirmacion debe depender de una verificacion segura/manual o de una integracion de pago confiable.
+
+6. POST-COMPRA
+Despues de confirmar pago/pedido:
+- Confirmacion de compra.
+- Numero/codigo de pedido.
+- Resumen.
+- Estado: pendiente de pago, pago por verificar, confirmado, preparando, enviado, entregado/cerrado.
+- Aviso cuando se entregue al transportista.
+- Datos de envio cuando corresponda.
+- Mensaje posterior para saber si todo llego bien.
+
+7. CONSULTAS DE ENVIO
+El bot debe responder con la politica real del negocio: zonas, empresas de envio, tiempos, costos y condiciones. Estos datos deben estar en una configuracion editable, no escritos de forma rigida en decenas de mensajes.
+
+8. AYUDA AL ADMINISTRADOR DESDE WHATSAPP
+Esta es una parte importante de la idea. El administrador podria escribir desde su numero autorizado:
+- “¿Cuantas ventas tengo hoy?”
+- “¿Que productos estan en oferta?”
+- “¿Que pedidos estan pendientes de pago?”
+- “Dame los pedidos de hoy.”
+- “¿Que producto se vende mas?”
+- “Busca Arcilla blanca.”
+- “Cambia el precio de X a Y.” (solo si se implementa con confirmacion fuerte)
+- “Marca el pedido 123 como preparado.”
+
+Para acciones sensibles, el bot debe pedir confirmacion antes de modificar datos.
+
+9. ALERTAS AUTOMATICAS AL ADMIN
+El bot puede avisar al administrador cuando:
+- Llega un nuevo pedido.
+- Un cliente envia comprobante.
+- Un pedido lleva demasiado tiempo pendiente.
+- Un producto queda agotado.
+- Se crea una compra grande.
+- Hay una consulta que el bot no puede resolver.
+
+10. ESCALAMIENTO A HUMANO
+Siempre debe existir “Hablar con una persona”.
+Cuando el bot detecte una consulta complicada, reclamo, pago dudoso o cualquier caso fuera de sus reglas, debe dejar de improvisar y pasar la conversacion al administrador.
+
+ARQUITECTURA RECOMENDADA
+Pagina web -> Supabase (productos, categorias, ofertas, kits, pedidos, clientes, estados).
+WhatsApp Business Platform/Cloud API -> Webhook -> servidor del bot -> Supabase.
+El servidor del bot decide la intencion, consulta Supabase y responde por WhatsApp.
+Para automatizaciones se puede usar n8n/Make si conviene, pero para acciones importantes conviene mantener una logica centralizada y controlada.
+
+TABLAS/CONCEPTOS QUE CONVIENE TENER EN SUPABASE
+- products
+- categories (si se decide separarlas de products)
+- kits
+- orders
+- order_items
+- customers
+- payments
+- payment_proofs
+- shipping/status
+- whatsapp_conversations
+- whatsapp_messages
+- bot_settings
+- admin_users / permisos
+- store_events / analytics
+
+SEGURIDAD
+- Nunca poner claves secretas de WhatsApp ni service_role key en el HTML.
+- La pagina publica solo debe usar la clave publica/anon cuando corresponda.
+- El token de WhatsApp debe vivir en el servidor.
+- Verificar el webhook.
+- Autorizar por numero/usuario las funciones administrativas.
+- Registrar acciones administrativas.
+- Confirmar acciones destructivas o cambios de precio.
+- Validar que los precios, pedidos y estados se obtengan de la base de datos.
+
+FASES RECOMENDADAS
+FASE 1: Bot basico
+- Saludo.
+- Menu.
+- FAQ.
+- Buscar productos.
+- Enlaces al catalogo.
+
+FASE 2: Ventas
+- Recibir carrito.
+- Crear pedido.
+- Confirmar total.
+- Datos de pago + QR.
+- Registrar comprobante pendiente.
+
+FASE 3: Postventa
+- Estado del pedido.
+- Avisos de preparacion/envio.
+- Seguimiento.
+
+FASE 4: Administracion por WhatsApp
+- Consultas de ventas.
+- Pedidos pendientes.
+- Alertas.
+- Gestion limitada con confirmacion.
+
+FASE 5: INTELIGENCIA
+- Entender mensajes naturales.
+- Recomendar productos segun lo que busca el cliente.
+- Detectar productos similares.
+- Recuperar carritos abandonados de forma responsable.
+- Generar respuestas personalizadas manteniendo reglas estrictas sobre precios, stock y pagos.
+
+REGLA CLAVE DEL PROYECTO
+El bot puede ser inteligente para entender al cliente, pero los datos criticos deben salir de la base de datos. Precio, disponibilidad, pedido, pago y estado nunca deben ser inventados por la IA.
+
+COMO CONTINUAR SI SE CAMBIA DE CUENTA
+Este archivo sirve como documento de continuidad. Al abrir otra cuenta, subir este TXT junto con el ZIP mas reciente del proyecto y decir: “Este es el contexto de Jaboneria Ocean. Quiero continuar el proyecto desde aqui”.
+Tambien conviene conservar siempre el ZIP mas reciente y cualquier SQL que se haya ejecutado en Supabase.
+
+PROXIMO PASO RECOMENDADO
+1. Terminar de estabilizar el panel de administracion: crear, editar, clonar, ordenar y ofertas.
+2. Confirmar que Supabase tenga las funciones/SQL necesarias.
+3. Definir la estructura de orders/payments.
+4. Conectar WhatsApp Business Platform mediante webhook.
+5. Construir el bot por fases, empezando por consultas de productos y pedidos.

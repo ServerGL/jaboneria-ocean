@@ -1,0 +1,59 @@
+JABONERIA OCEAN - NUEVA VERSION
+
+Esta versión está basada en tu deployFinal.zip y conserva tu configuración actual de Supabase en config.js.
+
+NUEVO EN LA TIENDA
+- Presentación inicial más clara: moldes, esencias, ceras, parafinas, bases y otros insumos para jabones y velas.
+- Ofertas de hoy y productos destacados, controlables desde Admin.
+- Favoritos guardados en el celular/computadora del visitante.
+- Categorías plegables en móvil y barra más compacta.
+- Buscador mejorado.
+- Ideas de combos para jabones, velas y emprendimiento.
+- Secciones de compra fácil y beneficios.
+- Registro de visitas, productos vistos, agregados al carrito, clics en WhatsApp y búsquedas.
+- Corrección del parpadeo inicial: la tienda espera el catálogo de Supabase antes de mostrar los productos, evitando mostrar primero la imagen antigua local cuando Supabase responde normalmente.
+
+NUEVO EN ADMIN
+- Categoría mediante selector; evita crear "Bases", "bases" y "Bases " como categorías distintas.
+- Opción + Nueva categoría cuando realmente necesitas crear una nueva.
+- Normalización de categorías existentes mediante la migración SQL.
+- Marcar producto como Destacado.
+- Marcar producto como Oferta y guardar precio anterior.
+- Estadísticas básicas de la tienda.
+- Se conserva el cambio de logo y fondo.
+- Se conserva subir/reemplazar imágenes, precios, agotados y orden.
+
+PASO OBLIGATORIO EN SUPABASE
+1. Abre SQL Editor.
+2. Crea una consulta nueva.
+3. Abre upgrade_catalog.sql.
+4. Copia todo su contenido y pégalo en Supabase.
+5. Pulsa Run una sola vez.
+6. Debe indicar Success.
+
+NO vuelvas a ejecutar setup.sql.
+
+DESPUÉS
+1. Revisa config.js y conserva tu Project URL y Publishable Key.
+2. Sube toda esta carpeta a tu mismo sitio de Netlify.
+3. Entra a /admin.
+4. Edita cualquier producto y prueba la nueva categoría, Destacado y Oferta.
+5. En la tienda pública revisa las nuevas secciones.
+
+CORRECCIÓN ACTUAL · 15/08/2026
+- Corregido el bug que dejaba el catálogo permanentemente en “Cargando catálogo...”: faltaban variables de estado iniciales antes del primer render.
+- La tienda ahora muestra el catálogo local inmediatamente y después intenta sincronizar con Supabase, por lo que no se queda bloqueada si la consulta remota falla.
+- Filtro de categorías reemplazado por un selector visible + botones rápidos; funciona mejor en celular y computadora.
+- Productos nuevos: ya no se solicita el número de orden al crear. El sistema calcula automáticamente la posición y coloca el producto al final de su categoría.
+- Se mantiene el reordenamiento manual con ↑ y ↓ desde Admin.
+- Añadido sistema de Kits/Combos administrable: crear, editar, ocultar, eliminar y reordenar; cada kit puede tener descripción, precio, imagen y productos incluidos con cantidades.
+- Añadido upgrade_kits.sql. Debe ejecutarse una sola vez en el mismo proyecto Supabase para activar la tabla de kits.
+
+ACTUALIZACIÓN V2 · 19/08/2026
+- Categorías circulares ahora se pueden desplazar horizontalmente y tienen flechas anterior/siguiente.
+- Añadido anuncio de bienvenida con X para cerrar, formas de pago y formas de envío.
+- El anuncio se puede activar/desactivar y editar desde Admin.
+- El carrusel de portada ahora puede cambiar sus 3 imágenes y textos desde Admin.
+- Añadido registro manual de ventas confirmadas por producto para conocer los más vendidos.
+- Estadísticas ampliadas: más vendidos, más agregados al carrito, visitas, vistas, WhatsApp y búsquedas.
+- Añadido homepage_admin_upgrade.sql para las nuevas columnas de Supabase.
